@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark Code Academy - Unlock Your Coding Potential</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Define custom colors and fonts */
+        :root {
+            --color-primary-purple: #5E35B1; /* Main Brand Color */
+            --color-primary-orange: #FF7A00; /* Accent/Highlight Color */
+            --color-secondary-blue: #00bcd4; /* New Secondary Accent for fun/modernity */
+        }
+        .font-brand { font-family: 'Inter', sans-serif; }
+        .bg-spark-purple { background-color: var(--color-primary-purple); }
+        .text-spark-purple { color: var(--color-primary-purple); }
+        .border-spark-purple { border-color: var(--color-primary-purple); }
+        .bg-spark-orange { background-color: var(--color-primary-orange); }
+        .text-spark-orange { color: var(--color-primary-orange); }
+        .bg-spark-blue { background-color: var(--color-secondary-blue); }
+        .text-spark-blue { color: var(--color-secondary-blue); }
+        
+        /* Custom scroll-spy style for the active nav link */
+        .nav-link.active {
+            /* Desktop Style */
+            border-bottom-width: 2px;
+            border-color: var(--color-primary-orange);
+            color: var(--color-primary-orange) !important;
+        }
+        .mobile-nav-link.active {
+             /* Mobile Style */
+             color: var(--color-primary-orange) !important;
+             background-color: #f3f4f6; /* bg-gray-100 */
+        }
+
+        /* Hero Image/Pattern (Simulated) */
+        .hero-pattern {
+            background-image: linear-gradient(to right, #ffffff00, #ffffff), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle fill="%23f5f5f5" cx="10" cy="10" r="1.5"/></svg>');
+            background-size: 40px 40px, auto;
+        }
+        
+        /* CSS for the On-Scroll Animation Effect */
+        .animate-on-scroll {
+            transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="font-brand text-gray-800 antialiased bg-white">
+
+    <header class="sticky top-0 z-50 bg-white shadow-lg/50 backdrop-blur-sm">
+        <div class="container mx-auto flex items-center justify-between p-4 lg:p-6 max-w-7xl">
+            <a href="#" class="flex items-center space-x-1 text-2xl font-extrabold transition-transform duration-300 hover:scale-[1.02]">
+                <span class="text-4xl text-spark-orange transition-colors duration-300 hover:text-spark-purple">⚡</span>
+                <span class="text-2xl text-spark-purple tracking-wider">SPARK</span>
+                <span class="text-2xl text-spark-orange tracking-wider">CODE</span>
+                <span class="text-xs text-gray-500 font-medium self-end -ml-1">ACADEMY</span>
+            </a>
+
+            <nav class="hidden space-x-8 text-base font-semibold lg:flex" id="desktop-nav">
+                <a href="#hero" class="nav-link text-gray-600 hover:text-spark-orange py-1 transition duration-300 active" data-target="hero">Home</a>
+                <a href="#courses" class="nav-link text-gray-600 hover:text-spark-orange py-1 transition duration-300" data-target="courses">Courses</a>
+                <a href="#team" class="nav-link text-gray-600 hover:text-spark-orange py-1 transition duration-300" data-target="team">Team</a>
+                <a href="#pricing" class="nav-link text-gray-600 hover:text-spark-orange py-1 transition duration-300" data-target="pricing">Pricing</a>
+            </nav>
+
+            <a href="#enroll" class="hidden lg:block bg-spark-purple text-white font-semibold py-2 px-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 hover:bg-spark-purple/90 transform hover:scale-[1.05]">
+                Start Coding
+            </a>
+
+            <button id="mobile-menu-button" class="lg:hidden text-spark-purple focus:outline-none p-2 rounded-lg hover:bg-gray-100 transition duration-150">
+                <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 shadow-inner">
+            <nav class="flex flex-col space-y-2 p-4 text-center font-medium">
+                <a href="#hero" class="mobile-nav-link block py-2 text-gray-700 hover:text-spark-orange hover:bg-gray-50 rounded-lg transition duration-150" data-target="hero">Home</a>
+                <a href="#courses" class="mobile-nav-link block py-2 text-gray-700 hover:text-spark-orange hover:bg-gray-50 rounded-lg transition duration-150" data-target="courses">Courses</a>
+                <a href="#team" class="mobile-nav-link block py-2 text-gray-700 hover:text-spark-orange hover:bg-gray-50 rounded-lg transition duration-150" data-target="team">Team</a>
+                <a href="#pricing" class="mobile-nav-link block py-2 text-gray-700 hover:text-spark-orange hover:bg-gray-50 rounded-lg transition duration-150" data-target="pricing">Pricing</a>
+                <a href="#enroll" class="block py-3 mt-4 bg-spark-orange text-white rounded-lg font-semibold hover:bg-spark-orange/90 transition duration-150">Start Coding</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="pt-24 pb-32 bg-gray-50 hero-pattern overflow-hidden">
+            <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+                <div class="lg:flex lg:items-center lg:justify-between">
+                    <div class="lg:w-1/2">
+                        <p class="text-base font-semibold text-spark-blue uppercase tracking-[0.2em] transform translate-y-8 opacity-0 animate-on-scroll" data-delay="100">
+                            The Future of Tech Starts Here
+                        </p>
+                        <h1 class="mt-2 text-6xl font-extrabold leading-tight text-gray-900 md:text-7xl transform translate-y-8 opacity-0 animate-on-scroll" data-delay="200">
+                            Unlock Your <br /><span class="text-spark-purple relative inline-block after:content-[''] after:absolute after:bottom-1 after:left-0 after:w-full after:h-2 after:bg-spark-orange/30 after:-z-10">Coding Potential</span>
+                        </h1>
+                        <p class="mt-8 text-xl text-gray-600 max-w-lg transform translate-y-8 opacity-0 animate-on-scroll" data-delay="300">
+                            Master modern development, data science, and AI with our immersive, **project-based learning model**. Transform your career in months, not years.
+                        </p>
+                        <div class="mt-12 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 transform translate-y-8 opacity-0 animate-on-scroll" data-delay="400">
+                            <a href="#courses" class="inline-flex items-center justify-center bg-spark-purple text-white font-bold py-3 px-8 rounded-full text-lg shadow-2xl transition duration-300 hover:bg-spark-purple/90 transform hover:scale-105">
+                                Explore Courses <span class="ml-2">→</span>
+                            </a>
+                            <a href="#why-us" class="inline-flex items-center justify-center border-2 border-spark-orange text-spark-orange font-bold py-3 px-8 rounded-full text-lg transition duration-300 hover:bg-spark-orange hover:text-white transform hover:scale-[1.02]">
+                                Request Demo
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mt-16 lg:mt-0 lg:w-1/2 flex justify-center lg:justify-end transform translate-y-8 opacity-0 animate-on-scroll" data-delay="500">
+                        <div class="h-80 w-full max-w-lg rounded-3xl bg-spark-blue/10 flex items-center justify-center border border-spark-blue/30 p-8 shadow-xl">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="courses" class="py-24 lg:py-36 bg-white">
+            <div class="container mx-auto px-4 lg:px-8 max-w-7xl text-center">
+                <span class="text-base font-semibold text-spark-orange uppercase tracking-[0.2em] transform translate-y-8 opacity-0 animate-on-scroll" data-delay="100">Learning Paths</span>
+                <h2 class="mt-4 text-4xl font-extrabold text-gray-900 md:text-5xl transform translate-y-8 opacity-0 animate-on-scroll" data-delay="200">
+                    Future-Proof Your Skills
+                </h2>
+                <p class="mt-6 text-xl text-gray-600 max-w-3xl mx-auto transform translate-y-8 opacity-0 animate-on-scroll" data-delay="300">
+                    Our immersive curricula are built for the modern tech stack, ensuring you learn skills immediately applicable in a professional environment.
+                </p>
+
+                <div class="mt-20 grid gap-10 sm:grid-cols-1 lg:grid-cols-3">
+                    <div class="course-card bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition duration-500 border-t-4 border-spark-orange transform translate-y-8 opacity-0 animate-on-scroll" data-delay="400">
+                        <div class="text-5xl text-spark-purple mb-4 transition-transform duration-300 group-hover:scale-110">💻</div>
+                        <h3 class="text-2xl font-bold mb-3 text-gray-900">Web Development</h3>
+                        <p class="text-gray-500 min-h-[4rem]">Build modern, responsive full-stack applications with React, Node.js, and cutting-edge tools.</p>
+                        <a href="#" class="mt-4 inline-block text-spark-orange font-semibold hover:underline group-hover:text-spark-purple transition">Start Path →</a>
+                    </div>
+
+                    <div class="course-card bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition duration-500 border-t-4 border-spark-purple transform translate-y-8 opacity-0 animate-on-scroll" data-delay="500">
+                        <div class="text-5xl text-spark-orange mb-4 transition-transform duration-300 group-hover:rotate-6">📊</div>
+                        <h3 class="text-2xl font-bold mb-3 text-gray-900">Data Science</h3>
+                        <p class="text-gray-500 min-h-[4rem]">Analyze, visualize, and model data using Python, Pandas, and foundational machine learning techniques.</p>
+                        <a href="#" class="mt-4 inline-block text-spark-orange font-semibold hover:underline group-hover:text-spark-purple transition">Start Path →</a>
+                    </div>
+
+                    <div class="course-card bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition duration-500 border-t-4 border-spark-orange transform translate-y-8 opacity-0 animate-on-scroll" data-delay="600">
+                        <div class="text-5xl text-spark-blue mb-4 transition-transform duration-300 group-hover:scale-110">🧠</div>
+                        <h3 class="text-2xl font-bold mb-3 text-gray-900">AI & Machine Learning</h3>
+                        <p class="text-gray-500 min-h-[4rem]">Dive into deep learning, neural networks, and building intelligent, scalable AI systems.</p>
+                        <a href="#" class="mt-4 inline-block text-spark-orange font-semibold hover:underline group-hover:text-spark-purple transition">Start Path →</a>
+                    </div>
+
+                    <!-- <div class="course-card bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition duration-500 border-t-4 border-spark-purple transform translate-y-8 opacity-0 animate-on-scroll" data-delay="700">
+                        <div class="text-5xl text-spark-blue mb-4 transition-transform duration-300 group-hover:translate-x-1">☁️</div>
+                        <h3 class="text-2xl font-bold mb-3 text-gray-900">DevOps & Cloud</h3>
+                        <p class="text-gray-500 min-h-[4rem]">Master CI/CD, Docker, Kubernetes, and deploy applications using AWS or Azure cloud platforms.</p>
+                        <a href="#" class="mt-4 inline-block text-spark-orange font-semibold hover:underline group-hover:text-spark-purple transition">Start Path →</a>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+        
+        <section id="why-us" class="bg-spark-purple py-20 lg:py-32">
+            <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+                <div class="text-center">
+                    <span class="text-base font-semibold text-spark-orange uppercase tracking-[0.2em] transform translate-y-8 opacity-0 animate-on-scroll" data-delay="100">Our Difference</span>
+                    <h2 class="mt-4 text-4xl font-bold transform translate-y-8 opacity-0 animate-on-scroll" data-delay="200">Why Choose Spark Code Academy?</h2>
+                    <p class="mt-4 text-xl text-gray-200 transform translate-y-8 opacity-0 animate-on-scroll" data-delay="300">
+                        Innovation, mentorship, and real-world results.
+                    </p>
+                </div>
+
+                <div class="mt-16 grid gap-12 md:grid-cols-3">
+                    <div class="text-center transform translate-y-8 opacity-0 animate-on-scroll" data-delay="400">
+                        <div class="mx-auto h-16 w-16 bg-white text-spark-purple rounded-full flex items-center justify-center text-3xl mb-4 shadow-xl">🚀</div>
+                        <h3 class="text-2xl font-semibold mb-2">Project-Based Learning</h3>
+                        <p class="text-gray-200">Build a portfolio of real applications. Learn by doing, not just watching.</p>
+                    </div>
+
+                    <div class="text-center transform translate-y-8 opacity-0 animate-on-scroll" data-delay="500">
+                        <div class="mx-auto h-16 w-16 bg-white text-spark-purple rounded-full flex items-center justify-center text-3xl mb-4 shadow-xl">🎓</div>
+                        <h3 class="text-2xl font-semibold mb-2">Expert Mentorship</h3>
+                        <p class="text-gray-200">Get 1:1 guidance from industry leaders who have worked at top tech companies.</p>
+                    </div>
+
+                    <div class="text-center transform translate-y-8 opacity-0 animate-on-scroll" data-delay="600">
+                        <div class="mx-auto h-16 w-16 bg-white text-spark-purple rounded-full flex items-center justify-center text-3xl mb-4 shadow-xl">🤝</div>
+                        <h3 class="text-2xl font-semibold mb-2">Career Support</h3>
+                        <p class="text-gray-200">Resume reviews, interview prep, and job placement assistance to secure your first role.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="py-24 lg:py-36 bg-white">
+            <div class="container mx-auto px-4 lg:px-8 max-w-7xl text-gray-900">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold text-gray-900 md:text-5xl transform translate-y-8 opacity-0 animate-on-scroll" data-delay="100">
+                        The Team Behind Spark Code
+                    </h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto transform translate-y-8 opacity-0 animate-on-scroll" data-delay="200">
+                        Our dedicated mentors and developers are here to guide your journey from novice to professional.
+                    </p>
+                    
+                </div>
+
+                <div class="mt-8 grid gap-8 md:grid-cols-3">
+                    
+                    <div class="text-center bg-gray-50 p-8 rounded-lg shadow-xl transform translate-y-8 opacity-0 animate-on-scroll" data-delay="400">
+                        <div class="mx-auto h-32 w-32 rounded-full overflow-hidden mb-6 border-4 border-spark-purple/30">
+                            <div class="h-full w-full bg-spark-purple/10 flex items-center justify-center text-4xl text-spark-purple">👤</div>
+                        </div>
+                        <h3 class="text-xl font-extrabold mb-1 text-gray-900 uppercase">ZAYD TAHIR</h3>
+                        <p class="text-spark-orange font-semibold mb-6">Full Stack Developer & Tutor</p>
+                        <p class="text-gray-600 text-sm mb-6 min-h-[5rem]">
+                            Zayd is our lead back-end specialist, focusing on robust architecture and scalable solutions. He also mentors on advanced Python and Node.js topics.
+                        </p>
+                        <a href="#" class="mt-4 inline-block text-spark-purple font-bold py-2 px-4 border-2 border-spark-purple rounded-full hover:bg-spark-purple hover:text-white transition duration-300 text-sm">
+                            View Zayd's Profile
+                        </a>
+                    </div>
+
+                    <div class="text-center bg-spark-orange p-8 rounded-lg shadow-2xl transform translate-y-8 opacity-0 animate-on-scroll" data-delay="500">
+                        <div class="mx-auto h-32 w-32 rounded-full overflow-hidden mb-6 border-4 border-white">
+                            <div class="h-full w-full bg-spark-purple/30 flex items-center justify-center text-4xl text-white">👤</div>
+                        </div>
+                        <h3 class="text-xl font-extrabold mb-1 text-white uppercase">JAFAR ABASS</h3>
+                        <p class="text-white font-semibold mb-6">Front-end Dev, Graphic Designer & Team Lead</p>
+                        <p class="text-white text-sm mb-6 min-h-[5rem]">
+                            As the Team Lead, Jafar ensures all projects meet high standards for user experience and visual communication, blending development with sharp design.
+                        </p>
+                        <a href="#" class="mt-4 inline-block text-spark-orange font-bold py-2 px-4 bg-white rounded-full hover:bg-gray-100 transition duration-300 text-sm">
+                            View Jafar's Profile
+                        </a>
+                    </div>
+
+                    <div class="text-center bg-gray-50 p-8 rounded-lg shadow-xl transform translate-y-8 opacity-0 animate-on-scroll" data-delay="600">
+                        <div class="mx-auto h-32 w-32 rounded-full overflow-hidden mb-6 border-4 border-spark-purple/30">
+                            <div class="h-full w-full bg-spark-purple/10 flex items-center justify-center text-4xl text-spark-purple">👤</div>
+                        </div>
+                        <h3 class="text-xl font-extrabold mb-1 text-gray-900 uppercase">MUHSIN</h3>
+                        <p class="text-spark-orange font-semibold mb-6">Front-end Developer & Product Designer</p>
+                        <p class="text-gray-600 text-sm mb-6 min-h-[5rem]">
+                            Muhsin specializes in turning user research into intuitive interfaces (UI) and user flows (UX), ensuring our students build products people love to use.
+                        </p>
+                        <a href="#" class="mt-4 inline-block text-spark-purple font-bold py-2 px-4 border-2 border-spark-purple rounded-full hover:bg-spark-purple hover:text-white transition duration-300 text-sm">
+                            View Muhsin's Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="py-24 lg:py-36 bg-gray-50">
+            <div class="container md:mx-auto lg:px-8 md:max-w-7xl text-center">
+                <span class="text-base font-semibold text-spark-orange uppercase tracking-[0.2em] transform translate-y-8 opacity-0 animate-on-scroll" data-delay="100">Investment</span>
+                <h2 class="mt-4 text-4xl font-extrabold text-gray-900 md:text-5xl transform translate-y-8 opacity-0 animate-on-scroll" data-delay="200">
+                    Simple, Transparent Pricing
+                </h2>
+                <p class="mt-6 text-xl text-gray-600 max-w-3xl mx-auto transform translate-y-8 opacity-0 animate-on-scroll" data-delay="300">
+                    Invest in your future. Choose the plan that best accelerates your career goals and matches your learning style.
+                </p>
+
+                <div class="mt-20 grid gap-8 px-3 lg:grid-cols-3">
+                    
+                    <div class="bg-white py-10 px-5 md:p-10 rounded-3xl shadow-lg border border-gray-100 flex flex-col items-center transition-transform duration-300 hover:shadow-xl transform translate-y-8 opacity-0 animate-on-scroll" data-delay="400">
+                        <h3 class="text-2xl font-bold text-spark-purple">Starter</h3>
+                        <p class="mt-2 text-gray-500">Foundation building</p>
+                        <p class="mt-6 text-4xl font-extrabold text-gray-900">₦49,000<span class="text-xl font-medium text-gray-500">/mo</span></p>
+                        
+                        <a href="#" class="mt-10 mb-4 block w-full bg-gray-200 text-gray-700 font-bold py-3 px-3 md:px-8 rounded-full transition duration-300 hover:bg-gray-300 transform hover:scale-[1.02]">
+                            Choose Starter
+                        </a>
+
+                        <ul class="mt-6 space-y-4 text-left text-gray-600 w-full">
+                            <li class="flex items-start"><span class="text-spark-orange text-xl md:mr-2">✅</span> Full access to **Core Curriculum**</li>
+                            <li class="flex items-start"><span class="text-spark-orange text-xl md:mr-2">✅</span> Community Forum Support</li>
+                            <li class="flex items-start"><span class="text-spark-orange text-xl md:mr-2">✅</span> Unlimited project submissions</li>
+                            <li class="flex items-start text-gray-400"><span class="text-gray-400 text-xl md:mr-2">❌</span> Weekly 1:1 Mentorship</li>
+                            <li class="flex items-start text-gray-400"><span class="text-gray-400 text-xl md:mr-2">❌</span> Dedicated Career Coach</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white py-10 px-5 md:p-10 rounded-3xl shadow-2xl ring-4 ring-spark-orange flex flex-col items-center transform scale-100 transition-transform duration-500 translate-y-8 opacity-0 animate-on-scroll" data-delay="500">
+                        <span class="bg-spark-orange text-white text-sm font-bold px-4 py-1 rounded-full mb-4 shadow-md">Most Popular 🔥</span>
+                        <h3 class="text-3xl font-bold text-spark-purple">Pro Developer</h3>
+                        <p class="mt-2 text-gray-500">The career-changer</p>
+                        <p class="mt-6 text-4xl font-extrabold text-gray-900">₦99,000<span class="text-xl font-medium text-gray-500">/mo</span></p>
+                        
+                        <a href="#" class="mt-10 mb-4 block w-full bg-spark-orange text-white font-bold py-3 md:px-8 rounded-full text-lg shadow-xl transition duration-300 hover:bg-spark-orange/90 transform hover:scale-[1.02]">
+                            Enroll in Pro
+                        </a>
+                        
+                        <ul class="mt-6 space-y-4 text-left text-gray-600 w-full">
+                            <li class="flex items-start"><span class="text-spark-orange text-xl md:mr-2">✅</span> **All Starter Features**</li>
+                            <li class="flex items-start"><span class="text-spark-orange text-xl md:mr-2">⭐</span> **Weekly 1:1 Mentorship Sessions**</li>
+                            <li class="flex items-start"><span class="text-spark-orange text-xl md:mr-2">⭐</span> Dedicated Career Coach</li>
+                            <li class="flex items-start"><span class="text-spark-orange text-xl md:mr-2">✅</span> Premium Project Templates</li>
+                            <li class="flex items-start text-gray-400"><span class="text-gray-400 text-xl md:mr-2">❌</span> Exclusive Job Network</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white py-10 px-5 md:p-10 rounded-3xl shadow-lg border border-gray-100 flex flex-col items-center transition-transform duration-300 hover:shadow-xl transform translate-y-8 opacity-0 animate-on-scroll" data-delay="600">
+                        <h3 class="text-2xl font-bold text-spark-purple">Elite Full-Stack</h3>
+                        <p class="mt-2 text-gray-500">Accelerated job placement</p>
+                        <p class="mt-6 text-4xl font-extrabold text-gray-900">₦249,000<span class="text-xl font-medium text-gray-500">/mo</span></p>
+                        
+                        <a href="#" class="mt-10 mb-4 block w-full bg-spark-purple text-white font-bold py-3 px-8 rounded-full transition duration-300 hover:bg-spark-purple/90 transform hover:scale-[1.02]">
+                            Contact Sales
+                        </a>
+
+                        <ul class="mt-6 space-y-4 text-left text-gray-600 w-full">
+                            <li class="flex items-start"><span class="text-spark-orange text-xl md:mr-2">✅</span> **All Pro Features**</li>
+                            <li class="flex items-start"><span class="text-spark-orange text-xl md:mr-2">🚀</span> **Daily Code Review & Support**</li>
+                            <li class="flex items-start"><span class="text-spark-orange text-xl md:mr-2">✅</span> Exclusive Partner Job Network</li>
+                            <li class="flex items-start"><span class="text-spark-orange text-xl md:mr-2">✅</span> Full Certification Included</li>
+                            <li class="flex items-start"><span class="text-spark-orange text-xl md:mr-2">✅</span> Post-Graduation Support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="enroll" class="bg-spark-orange py-20 lg:py-24">
+            <div class="container mx-auto px-4 lg:px-8 max-w-7xl text-center">
+                <h2 class="text-4xl font-extrabold text-white md:text-5xl transform translate-y-8 opacity-0 animate-on-scroll" data-delay="100">Ready to Ignite Your Career?</h2>
+                <p class="mt-6 text-xl text-white/90 max-w-3xl mx-auto transform translate-y-8 opacity-0 animate-on-scroll" data-delay="200">
+                    Join thousands of successful developers who started their journey with Spark Code Academy. Take the first step today!
+                </p>
+                <div class="mt-12 transform translate-y-8 opacity-0 animate-on-scroll" data-delay="300">
+                    <a href="#" class="bg-white text-spark-orange font-bold py-4 px-12 rounded-full text-xl shadow-2xl transition duration-300 hover:bg-gray-100 transform hover:scale-105 inline-block ring-4 ring-white/50">
+                        Get Your Free Coding Starter Kit →
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-spark-purple py-16">
+        <div class="container mx-auto px-4 lg:px-8 max-w-7xl text-white">
+            <div class="grid grid-cols-2 gap-10 md:grid-cols-5">
+                
+                <div class="col-span-2 md:col-span-2">
+                    <a href="#" class="flex items-center space-x-1 text-2xl font-extrabold">
+                        <span class="text-3xl text-spark-orange">⚡</span>
+                        <span class="text-2xl text-white tracking-wider">SPARK</span>
+                        <span class="text-2xl text-spark-orange tracking-wider">CODE</span>
+                    </a>
+                    <p class="mt-4 text-gray-300 max-w-xs">
+                        &copy; 2025 Spark Code Academy. Igniting careers one line of code at a time.
+                    </p>
+                    <!-- <div class="mt-6 flex space-x-4 text-2xl">
+                        <a href="https://wa.me/yournumber" class="text-gray-400 hover:text-spark-orange transition duration-200" title="WhatsApp">📱</a>
+                        <a href="https://twitter.com/yourhandle" class="text-gray-400 hover:text-spark-orange transition duration-200" title="Twitter">🐦</a>
+                        <a href="https://instagram.com/yourhandle" class="text-gray-400 hover:text-spark-orange transition duration-200" title="Instagram">📸</a>
+                    </div> -->
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-5 text-spark-orange">Academy</h4>
+                    <ul class="space-y-3 text-gray-300 text-base">
+                        <li><a href="#courses" class="hover:text-white transition">Courses</a></li>
+                        <li><a href="#pricing" class="hover:text-white transition">Pricing</a></li>
+                        <li><a href="#" class="hover:text-white transition">Certifications</a></li>
+                        <li><a href="#" class="hover:text-white transition">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-5 text-spark-orange">Company</h4>
+                    <ul class="space-y-3 text-gray-300 text-base">
+                        <li><a href="#" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="#team" class="hover:text-white transition">Our Team</a></li>
+                        <li><a href="#" class="hover:text-white transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-5 text-spark-orange">Legal</h4>
+                    <ul class="space-y-3 text-gray-300 text-base">
+                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-white transition">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-white/20 text-center text-sm text-gray-400">
+                Crafted with passion by coders, for coders.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+            const sections = document.querySelectorAll('section');
+            const header = document.querySelector('header');
+            let headerHeight = header.offsetHeight;
+
+            // Update headerHeight on resize for Scroll Spy accuracy
+            window.addEventListener('resize', () => {
+                headerHeight = header.offsetHeight;
+            });
+
+            // 1. Mobile Menu Toggle & Close
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                    // Handle immediate active class on click/hash change
+                    const targetId = link.getAttribute('data-target');
+                    if (targetId) {
+                         // Temporarily remove all 'active' classes
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        // Add 'active' class to the clicked link
+                        document.querySelectorAll(`[data-target="${targetId}"]`).forEach(l => {
+                            l.classList.add('active');
+                        });
+                    }
+                });
+            });
+
+            // 2. Scroll Spy Navigation 
+            // Options adjusted to trigger when section enters the viewport, accounting for the sticky header height.
+            const navObserverOptions = {
+                root: null,
+                // Triggers when the top of the section hits slightly below the header
+                rootMargin: `-${headerHeight + 20}px 0px -50% 0px`, 
+                threshold: 0
+            };
+
+            const navObserver = new IntersectionObserver((entries) => {
+                let currentActiveId = null;
+                let topRatio = -1; 
+
+                // Find the section that is closest to the top of the viewport (largest intersection ratio)
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.intersectionRatio > topRatio) {
+                            topRatio = entry.intersectionRatio;
+                            currentActiveId = entry.target.id;
+                        }
+                    }
+                });
+
+                if (currentActiveId) {
+                    // Update all corresponding navigation links
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    document.querySelectorAll(`[data-target="${currentActiveId}"]`).forEach(link => {
+                        link.classList.add('active');
+                    });
+                } else if (window.scrollY < sections[0].offsetTop - headerHeight) {
+                    // Re-activate 'hero' if we scroll back above the first section
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    document.querySelectorAll(`[data-target="hero"]`).forEach(link => {
+                        link.classList.add('active');
+                    });
+                }
+            }, navObserverOptions);
+
+            // Set up observer for all sections
+            sections.forEach(section => {
+                navObserver.observe(section);
+            });
+
+
+            // 3. Full Website Animate On Scroll (Fade Up/Stagger)
+            const animationObserverOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.05 
+            };
+
+            const animationObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const delay = target.getAttribute('data-delay') || 0; 
+
+                        setTimeout(() => {
+                            target.style.transitionDelay = `${delay}ms`; 
+                            target.classList.add('is-visible'); 
+                            target.classList.remove('opacity-0', 'translate-y-8');
+                        }, 50); 
+
+                        observer.unobserve(target);
+                    }
+                });
+            }, animationObserverOptions);
+
+            document.querySelectorAll('.animate-on-scroll').forEach(element => {
+                animationObserver.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
