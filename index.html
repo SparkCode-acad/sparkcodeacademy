@@ -6,6 +6,8 @@
     <title>SparkCode Academy | Forge Your Future</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
     <style>
         body { font-family: 'Space Grotesk', sans-serif; background-color: #fdfcf9; overflow-x: hidden; }
         .brutalist-border { border: 3px solid #000; }
@@ -17,10 +19,30 @@
             background-size: 20px 20px;
         }
 
-        .neo-btn { transition: all 0.1s ease; cursor: pointer; }
-        .neo-btn:hover { transform: translate(-2px, -2px); box-shadow: 10px 10px 0px 0px #000; }
+        .neo-btn { transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; }
+        .neo-btn:hover { transform: translate(-4px, -4px); box-shadow: 12px 12px 0px 0px #000; }
         .neo-btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px 0px #000; }
         
+        /* Custom "Crazy" Animations */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(3deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(3deg); }
+        }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+
+        @keyframes glitch {
+            0% { transform: skew(0deg); }
+            20% { transform: skew(-1deg); }
+            40% { transform: skew(1deg); }
+            60% { transform: skew(-0.5deg); }
+            100% { transform: skew(0deg); }
+        }
+        .glitch-text:hover { animation: glitch 0.3s linear infinite; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
         .custom-scrollbar::-webkit-scrollbar { width: 8px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #000; border-radius: 10px; }
@@ -29,20 +51,20 @@
 
 <body class="blueprint-bg text-black selection:bg-[#FF8A00] selection:text-white">
 
-<header class="fixed top-0 w-full z-50 px-4 py-4 md:py-6">
+<header class="fixed top-0 w-full z-50 px-4 py-4 md:py-6 animate__animated animate__fadeInDown">
     <nav class="max-w-7xl mx-auto flex items-center justify-between bg-white brutalist-border p-3 md:p-4 shadow-[4px_4px_0px_0px_#000]">
         <div class="flex items-center gap-2 md:gap-3">
-            <div class="w-8 h-8 md:w-10 md:h-10 bg-[#FF8A00] brutalist-border flex items-center justify-center transform -rotate-3">
+            <div class="w-8 h-8 md:w-10 md:h-10 bg-[#FF8A00] brutalist-border flex items-center justify-center transform -rotate-3 hover:rotate-180 transition-transform duration-500">
                 <svg class="w-5 h-5 md:w-6 md:h-6 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
             </div>
-            <span class="text-base md:text-xl font-black uppercase tracking-tighter" style="font-family: 'Outfit';">Spark<span class="text-[#A855F7]">Code</span></span>
+            <a href="./index.html" class="text-base md:text-xl font-black uppercase tracking-tighter hover:tracking-widest transition-all" style="font-family: 'Outfit';">Spark<span class="text-[#A855F7]">Code</span></a>
         </div>
 
         <div class="hidden lg:flex gap-8 text-[10px] font-black uppercase tracking-widest">
-            <a href="#about" class="hover:text-[#FF8A00]">About</a>
-            <a href="#services" class="hover:text-[#A855F7]">Services</a>
-            <a href="#team" class="hover:text-[#FF8A00]">Team</a>
-            <a href="#courses" class="hover:text-[#A855F7]">Courses</a>
+            <a href="#about" class="hover:text-[#FF8A00] hover:scale-110 transition-transform">About</a>
+            <a href="#services" class="hover:text-[#A855F7] hover:scale-110 transition-transform">Services</a>
+            <a href="#team" class="hover:text-[#FF8A00] hover:scale-110 transition-transform">Team</a>
+            <a href="#courses" class="hover:text-[#A855F7] hover:scale-110 transition-transform">Courses</a>
         </div>
 
         <a href="#contact" class="neo-btn bg-black text-white px-4 md:px-6 py-2 text-[10px] font-bold uppercase tracking-widest brutalist-border shadow-[3px_3px_0px_0px_#A855F7]">Apply Now</a>
@@ -51,107 +73,109 @@
 
 <section class="relative pt-32 md:pt-52 pb-20 md:pb-40 px-6">
     <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-        <div class="text-center lg:text-left">
-            <span class="inline-block bg-[#A855F7] text-white brutalist-border px-4 py-1 text-xs font-bold uppercase mb-6 shadow-[4px_4px_0px_0px_#000]">Accra's Premier Dev Lab</span>
-            <h1 class="text-5xl md:text-8xl font-black leading-[0.85] tracking-tighter mb-8 italic">IGNITE <br />YOUR <span class="text-[#FF8A00]">CODE.</span></h1>
-            <p class="text-lg md:text-xl font-bold mb-10 max-w-lg mx-auto lg:mx-0 border-l-8 border-black pl-6">Zero fluff. High voltage. We build the engineers that power the global tech economy.</p>
+        <div class="text-center lg:text-left animate__animated animate__fadeInLeft">
+            <span class="inline-block bg-[#A855F7] text-white brutalist-border px-4 py-1 text-xs font-bold uppercase mb-6 shadow-[4px_4px_0px_0px_#000] animate__animated animate__pulse animate__infinite">Lagos' Premier Dev Lab</span>
+            <h1 class="text-5xl md:text-8xl font-black leading-[0.85] tracking-tighter mb-8 italic glitch-text transition-all">IGNITE <br />YOUR <span class="text-[#FF8A00]">CODE.</span></h1>
+            <p class="text-lg md:text-xl font-bold mb-10 max-w-lg mx-auto lg:mx-0 border-l-8 border-black pl-6">Zero fluff. High voltage. We build the engineers and designers that power the African tech economy.</p>
             <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
                 <a href="#courses" class="neo-btn bg-[#FF8A00] brutalist-border px-10 py-5 font-black uppercase brutalist-shadow">View Courses</a>
                 <a href="#contact" class="neo-btn bg-white brutalist-border px-10 py-5 font-black uppercase brutalist-shadow">Join Cohort</a>
             </div>
         </div>
-        <div class="hidden lg:block relative">
-            <div class="w-full aspect-square bg-white brutalist-border brutalist-shadow rotate-3 p-10 flex flex-col justify-between">
+        <div class="hidden lg:block relative animate__animated animate__zoomIn">
+            <div class="w-full aspect-square bg-white brutalist-border brutalist-shadow p-10 flex flex-col justify-between animate-float">
                 <div class="flex justify-between items-start">
-                    <div class="w-20 h-20 bg-[#A855F7] brutalist-border shadow-[4px_4px_0px_0px_#000]"></div>
+                    <div class="w-20 h-20 bg-[#A855F7] brutalist-border shadow-[4px_4px_0px_0px_#000] hover:bg-black transition-colors duration-500"></div>
                     <div class="text-right font-black uppercase text-4xl">2026<br/>EDITION</div>
                 </div>
-                <div class="bg-black text-white p-4 font-mono text-xs"> > npm install success --global </div>
+                <div class="bg-black text-white p-4 font-mono text-xs overflow-hidden group">
+                   <span class="inline-block group-hover:translate-x-full transition-transform duration-1000"> > npm install success --global </span>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<section id="about" class="py-24 bg-white border-y-[3px] border-black px-6">
+<section id="about" class="reveal py-24 bg-white border-y-[3px] border-black px-6">
     <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <div class="space-y-6">
             <h3 class="text-4xl md:text-6xl font-black tracking-tighter uppercase italic text-[#A855F7]">The Mission.</h3>
-            <p class="text-xl font-bold leading-tight">SparkCode Academy isn't just a school. It's a forge for digital weapons.</p>
-            <p class="text-slate-600 font-medium">We found that traditional degrees take too long and teach too little. We condensed four years of CS theory into 12 weeks of brutal, project-led engineering.</p>
+            <p class="text-xl font-bold leading-tight">SparkCode Academy Lagos is a high-pressure forge for the next generation of digital creators.</p>
+            <p class="text-slate-600 font-medium">Traditional degrees take too long. We've condensed the essential skills for the modern economy into intensive, project-led tracks. Whether it's shipping production-ready code or designing world-class interfaces, we train you to deliver at a global standard from the heart of Lagos.</p>
         </div>
         <div class="grid grid-cols-2 gap-4 md:gap-8">
-            <div class="p-8 bg-[#FF8A00] brutalist-border brutalist-shadow text-center">
-                <span class="block text-4xl font-black italic">12wk</span>
-                <span class="text-[10px] font-black uppercase">Intensity</span>
+            <div class="p-8 bg-[#FF8A00] brutalist-border brutalist-shadow text-center hover:scale-105 transition-transform cursor-pointer">
+                <span class="block text-4xl font-black italic">LAG</span>
+                <span class="text-[10px] font-black uppercase">Innovation Hub</span>
             </div>
-            <div class="p-8 bg-black text-white brutalist-border shadow-[6px_6px_0px_0px_#A855F7] text-center">
+            <div class="p-8 bg-black text-white brutalist-border shadow-[6px_6px_0px_0px_#A855F7] text-center hover:-translate-y-2 transition-transform cursor-pointer">
                 <span class="block text-4xl font-black italic">100%</span>
-                <span class="text-[10px] font-black uppercase">Real Projects</span>
+                <span class="text-[10px] font-black uppercase">Job Ready</span>
             </div>
         </div>
     </div>
 </section>
 
-<section id="services" class="py-24 px-6">
+<section id="services" class="reveal py-24 px-6">
     <div class="max-w-7xl mx-auto">
         <h3 class="text-4xl font-black tracking-tighter mb-12 uppercase italic underline decoration-[10px] decoration-[#FF8A00]">Expertise_Stack</h3>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-white brutalist-border p-8 brutalist-shadow hover:bg-slate-50">
+            <div class="bg-white brutalist-border p-8 brutalist-shadow hover:-rotate-2 transition-all cursor-crosshair">
                 <div class="w-12 h-12 bg-black text-white brutalist-border mb-6 flex items-center justify-center font-black">01</div>
-                <h4 class="text-2xl font-black uppercase mb-4">Architecture</h4>
-                <p class="text-sm font-bold text-slate-500 uppercase leading-none mb-4 tracking-tighter">System Design & Databases</p>
-                <p class="text-sm font-medium">Building foundations that don't crumble under traffic.</p>
+                <h4 class="text-2xl font-black uppercase mb-4">Frontend Development</h4>
+                <p class="text-sm font-bold text-slate-500 uppercase leading-none mb-4 tracking-tighter">React & Modern Web</p>
+                <p class="text-sm font-medium">Building fast, responsive, and interactive web applications that scale.</p>
             </div>
-            <div class="bg-white brutalist-border p-8 brutalist-shadow hover:bg-slate-50">
+            <div class="bg-white brutalist-border p-8 brutalist-shadow hover:rotate-2 transition-all cursor-crosshair">
                 <div class="w-12 h-12 bg-[#A855F7] text-white brutalist-border mb-6 flex items-center justify-center font-black">02</div>
-                <h4 class="text-2xl font-black uppercase mb-4">Interaction</h4>
-                <p class="text-sm font-bold text-slate-500 uppercase leading-none mb-4 tracking-tighter">Frontend Engineering</p>
-                <p class="text-sm font-medium">Crafting lightning-fast, accessible, and brutalist interfaces.</p>
+                <h4 class="text-2xl font-black uppercase mb-4">Graphic Design</h4>
+                <p class="text-sm font-bold text-slate-500 uppercase leading-none mb-4 tracking-tighter">Branding & Identity</p>
+                <p class="text-sm font-medium">Mastering visual communication, typography, and professional brand systems.</p>
             </div>
-            <div class="bg-white brutalist-border p-8 brutalist-shadow hover:bg-slate-50 sm:col-span-2 lg:col-span-1">
+            <div class="bg-white brutalist-border p-8 brutalist-shadow hover:-translate-y-4 transition-all cursor-crosshair sm:col-span-2 lg:col-span-1">
                 <div class="w-12 h-12 bg-[#FF8A00] text-black brutalist-border mb-6 flex items-center justify-center font-black">03</div>
-                <h4 class="text-2xl font-black uppercase mb-4">Automation</h4>
-                <p class="text-sm font-bold text-slate-500 uppercase leading-none mb-4 tracking-tighter">AI & DevOps</p>
-                <p class="text-sm font-medium">Leveraging neural networks to build smarter, faster pipelines.</p>
+                <h4 class="text-2xl font-black uppercase mb-4">Product Design</h4>
+                <p class="text-sm font-bold text-slate-500 uppercase leading-none mb-4 tracking-tighter">UI/UX Strategy</p>
+                <p class="text-sm font-medium">Solving user problems through research, wireframing, and Figma prototyping.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section id="team" class="py-24 bg-black text-white px-6 overflow-hidden">
+<section id="team" class="reveal py-24 bg-black text-white px-6 overflow-hidden">
     <div class="max-w-7xl mx-auto">
         <h3 class="text-5xl md:text-7xl font-black tracking-tighter mb-20 text-center uppercase italic">The_Instructors</h3>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-12">
             <div class="group relative">
-                <div class="bg-white brutalist-border p-2 brutalist-shadow-purple transition-transform group-hover:-rotate-2">
+                <div class="bg-white brutalist-border p-2 brutalist-shadow transition-transform group-hover:scale-105">
                     <div class="h-64 bg-slate-300 border-2 border-black mb-4 flex items-center justify-center overflow-hidden">
-                        <span class="text-8xl grayscale group-hover:grayscale-0 transition-all duration-300">👨‍💻</span>
+                        <span class="text-8xl grayscale group-hover:grayscale-0 group-hover:rotate-12 transition-all duration-300">👨‍💻</span>
                     </div>
                     <div class="p-4 text-black">
-                        <h4 class="text-2xl font-black uppercase">Kofi Arhin</h4>
-                        <p class="text-[10px] font-black text-[#FF8A00] uppercase tracking-widest">Lead Fullstack</p>
+                        <h4 class="text-2xl font-black uppercase">Zayd Tahir</h4>
+                        <p class="text-[10px] font-black text-[#FF8A00] uppercase tracking-widest">Frontend Lead</p>
                     </div>
                 </div>
             </div>
             <div class="group relative">
-                <div class="bg-white brutalist-border p-2 brutalist-shadow transition-transform group-hover:rotate-2">
+                <div class="bg-white brutalist-border p-2 brutalist-shadow transition-transform group-hover:scale-105">
                     <div class="h-64 bg-slate-300 border-2 border-black mb-4 flex items-center justify-center overflow-hidden">
-                        <span class="text-8xl grayscale group-hover:grayscale-0 transition-all duration-300">👩‍🎨</span>
+                        <span class="text-8xl grayscale group-hover:grayscale-0 group-hover:-rotate-12 transition-all duration-300">🎨</span>
                     </div>
                     <div class="p-4 text-black">
-                        <h4 class="text-2xl font-black uppercase">Ama Mensah</h4>
-                        <p class="text-[10px] font-black text-[#A855F7] uppercase tracking-widest">UI Architect</p>
+                        <h4 class="text-2xl font-black uppercase">Jafar Abass</h4>
+                        <p class="text-[10px] font-black text-[#A855F7] uppercase tracking-widest">Graphic Design</p>
                     </div>
                 </div>
             </div>
             <div class="group relative sm:col-span-2 lg:col-span-1">
-                <div class="bg-white brutalist-border p-2 brutalist-shadow transition-transform group-hover:-rotate-1">
+                <div class="bg-white brutalist-border p-2 brutalist-shadow transition-transform group-hover:scale-105">
                     <div class="h-64 bg-slate-300 border-2 border-black mb-4 flex items-center justify-center overflow-hidden">
-                        <span class="text-8xl grayscale group-hover:grayscale-0 transition-all duration-300">🤖</span>
+                        <span class="text-8xl grayscale group-hover:grayscale-0 group-hover:scale-150 transition-all duration-300">📱</span>
                     </div>
                     <div class="p-4 text-black">
-                        <h4 class="text-2xl font-black uppercase">Yaw Darko</h4>
-                        <p class="text-[10px] font-black text-black uppercase tracking-widest">AI Lead</p>
+                        <h4 class="text-2xl font-black uppercase">Muhsin Raheem</h4>
+                        <p class="text-[10px] font-black text-black uppercase tracking-widest">Product Design</p>
                     </div>
                 </div>
             </div>
@@ -159,76 +183,105 @@
     </div>
 </section>
 
-<section id="courses" class="py-24 px-6 bg-[#fdfcf9]">
+<section id="courses" class="reveal py-24 px-6 bg-[#fdfcf9]">
     <div class="max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
             <h3 class="text-4xl md:text-6xl font-black tracking-tighter uppercase italic underline decoration-[10px] decoration-black">Learning_Paths</h3>
-            <p class="font-black text-xs uppercase bg-[#FF8A00] p-2 brutalist-border">Current Batch: Jan 2026</p>
+            <p class="font-black text-xs uppercase bg-[#FF8A00] p-2 brutalist-border animate__animated animate__flash animate__infinite animate__slow">Current Batch: 2026</p>
         </div>
         <div class="space-y-6">
-            <div class="bg-white brutalist-border p-6 md:p-10 brutalist-shadow flex flex-col md:flex-row justify-between items-center group hover:bg-[#A855F7]/5 transition-colors">
+            <div class="bg-white brutalist-border p-6 md:p-10 brutalist-shadow flex flex-col md:flex-row justify-between items-center group hover:bg-[#A855F7]/10 transition-all duration-500">
                 <div class="text-center md:text-left mb-6 md:mb-0">
-                    <h4 class="text-3xl font-black uppercase tracking-tighter">Full-Stack Bootcamp</h4>
-                    <p class="font-bold text-slate-500 italic">MERN Stack + Python Automation</p>
+                    <h4 class="text-3xl font-black uppercase tracking-tighter group-hover:translate-x-4 transition-transform">Frontend Development</h4>
+                    <p class="font-bold text-slate-500 italic">React + Tailwind + API Integration</p>
                 </div>
-                <div class="flex items-center gap-6">
-                    <div class="text-right hidden sm:block">
-                        <p class="text-[10px] font-black uppercase">Duration</p>
-                        <p class="font-bold">12 Weeks</p>
-                    </div>
-                    <a href="#contact" class="neo-btn bg-black text-white px-8 py-4 font-black uppercase text-sm">Enroll</a>
-                </div>
+                <a href="#contact" class="neo-btn bg-black text-white px-8 py-4 font-black uppercase text-sm">Enroll</a>
             </div>
-            <div class="bg-white brutalist-border p-6 md:p-10 brutalist-shadow flex flex-col md:flex-row justify-between items-center group hover:bg-[#FF8A00]/5 transition-colors">
+            <div class="bg-white brutalist-border p-6 md:p-10 brutalist-shadow flex flex-col md:flex-row justify-between items-center group hover:bg-[#FF8A00]/10 transition-all duration-500">
                 <div class="text-center md:text-left mb-6 md:mb-0">
-                    <h4 class="text-3xl font-black uppercase tracking-tighter">UI Engineering</h4>
-                    <p class="font-bold text-slate-500 italic">Design Systems + Advanced Tailwind</p>
+                    <h4 class="text-3xl font-black uppercase tracking-tighter group-hover:translate-x-4 transition-transform">Graphic Design</h4>
+                    <p class="font-bold text-slate-500 italic">Visual Communications + Branding</p>
                 </div>
-                <div class="flex items-center gap-6">
-                    <div class="text-right hidden sm:block">
-                        <p class="text-[10px] font-black uppercase">Duration</p>
-                        <p class="font-bold">6 Weeks</p>
-                    </div>
-                    <a href="#contact" class="neo-btn bg-black text-white px-8 py-4 font-black uppercase text-sm">Enroll</a>
+                <a href="#contact" class="neo-btn bg-black text-white px-8 py-4 font-black uppercase text-sm">Enroll</a>
+            </div>
+            <div class="bg-white brutalist-border p-6 md:p-10 brutalist-shadow flex flex-col md:flex-row justify-between items-center group hover:bg-[#A855F7]/10 transition-all duration-500">
+                <div class="text-center md:text-left mb-6 md:mb-0">
+                    <h4 class="text-3xl font-black uppercase tracking-tighter group-hover:translate-x-4 transition-transform">Product Design</h4>
+                    <p class="font-bold text-slate-500 italic">UX Research + Advanced UI Systems</p>
                 </div>
+                <a href="#contact" class="neo-btn bg-black text-white px-8 py-4 font-black uppercase text-sm">Enroll</a>
             </div>
         </div>
     </div>
 </section>
 
-<section id="contact" class="py-24 bg-[#FF8A00] border-t-[3px] border-black px-6">
+<section id="contact" class="reveal py-24 bg-[#FF8A00] border-t-[3px] border-black px-6">
     <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-        <div>
+        <div class="animate__animated animate__shakeY animate__infinite animate__slow">
             <h3 class="text-6xl md:text-8xl font-black tracking-tighter text-white uppercase italic" style="text-shadow: 4px 4px 0px #000;">Ready <br />To <br />Build?</h3>
-            <p class="font-black uppercase tracking-[0.2em] mt-8 text-black">Osu, Accra. Next to Nyaniba Estate.</p>
+            <p class="font-black uppercase tracking-[0.2em] mt-8 text-black">Yaba, Lagos. Nigeria.</p>
         </div>
-        <form class="bg-white brutalist-border p-8 brutalist-shadow space-y-6" onsubmit="event.preventDefault();">
+        <form id="applyForm" class="bg-white brutalist-border p-8 brutalist-shadow space-y-6 hover:shadow-[12px_12px_0px_0px_#000] transition-shadow">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input placeholder="NAME" class="w-full bg-slate-50 brutalist-border p-4 font-black uppercase text-xs focus:outline-none focus:bg-[#A855F7]/10" />
-                <input placeholder="EMAIL" type="email" class="w-full bg-slate-50 brutalist-border p-4 font-black uppercase text-xs focus:outline-none focus:bg-[#A855F7]/10" />
+                <input required id="userName" placeholder="NAME" class="w-full bg-slate-50 brutalist-border p-4 font-black uppercase text-xs focus:outline-none focus:ring-4 focus:ring-[#A855F7] transition-all" />
+                <input required type="email" id="userEmail" placeholder="EMAIL" class="w-full bg-slate-50 brutalist-border p-4 font-black uppercase text-xs focus:outline-none focus:ring-4 focus:ring-[#A855F7] transition-all" />
             </div>
-            <select class="w-full bg-slate-50 brutalist-border p-4 font-black uppercase text-xs focus:outline-none">
-                <option>Select Track</option>
-                <option>Full-Stack Bootcamp</option>
-                <option>UI Engineering</option>
+            <select required id="courseSelect" class="w-full bg-slate-50 brutalist-border p-4 font-black uppercase text-xs focus:outline-none">
+                <option value="">Select Track</option>
+                <option>Frontend Development</option>
+                <option>Graphic Design</option>
+                <option>Product Design</option>
             </select>
-            <textarea placeholder="MISSION STATEMENT / WHY YOU?" rows="4" class="w-full bg-slate-50 brutalist-border p-4 font-black uppercase text-xs focus:outline-none focus:bg-[#A855F7]/10 resize-none"></textarea>
-            <button class="neo-btn w-full py-5 bg-black text-white font-black uppercase tracking-widest text-sm shadow-[6px_6px_0px_0px_#A855F7]">Transmit Application</button>
+            <textarea required id="userMessage" placeholder="MISSION STATEMENT / WHY YOU?" rows="4" class="w-full bg-slate-50 brutalist-border p-4 font-black uppercase text-xs focus:outline-none focus:ring-4 focus:ring-[#A855F7] transition-all resize-none"></textarea>
+            <button type="submit" class="neo-btn w-full py-5 bg-black text-white font-black uppercase tracking-widest text-sm shadow-[6px_6px_0px_0px_#A855F7]">Transmit Application</button>
         </form>
     </div>
 </section>
 
 <footer class="py-12 bg-white border-t-[3px] border-black px-6">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-        <div class="font-black uppercase text-xl">Spark<span class="text-[#A855F7]">Code</span></div>
+        <div class="font-black uppercase text-xl animate__animated animate__headShake animate__infinite">Spark<span class="text-[#A855F7]">Code</span></div>
         <div class="flex gap-10 text-[10px] font-black uppercase tracking-widest">
-            <a href="#" class="hover:text-[#FF8A00]">GitHub</a>
-            <a href="#" class="hover:text-[#A855F7]">Instagram</a>
+            <a href="#" class="hover:text-[#FF8A00] transition-colors">GitHub</a>
+            <a href="#" class="hover:text-[#A855F7] transition-colors">Instagram</a>
             <a href="#" class="hover:text-black italic">©2026</a>
         </div>
-        <div class="text-[10px] font-black uppercase tracking-widest opacity-40">Accra, Ghana</div>
+        <div class="text-[10px] font-black uppercase tracking-widest opacity-40">Lagos, Nigeria</div>
     </div>
 </footer>
+
+<script>
+    // Scroll Reveal Logic
+    function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            var elementVisible = 150;
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+            }
+        }
+    }
+    window.addEventListener("scroll", reveal);
+    reveal(); // Run once on load
+
+    // Functional form handling
+    document.getElementById('applyForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('userName').value;
+        const btn = e.target.querySelector('button');
+        btn.disabled = true;
+        btn.innerText = "TRANSMITTING...";
+        
+        setTimeout(() => {
+            alert(`Application Received, ${name}! We've sent a transmission to your email.`);
+            e.target.reset();
+            btn.disabled = false;
+            btn.innerText = "Transmit Application";
+        }, 1500);
+    });
+</script>
 
 </body>
 </html>
