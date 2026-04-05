@@ -122,17 +122,31 @@
         }
 
         @keyframes rotate-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
+
         .animate-rotate-slow {
             animation: rotate-slow 15s linear infinite;
         }
 
         @keyframes float-side {
-            0%, 100% { transform: translateY(-50%) translateX(0); }
-            50% { transform: translateY(-50%) translateX(10px); }
+
+            0%,
+            100% {
+                transform: translateY(-50%) translateX(0);
+            }
+
+            50% {
+                transform: translateY(-50%) translateX(10px);
+            }
         }
+
         .animate-float-side {
             animation: float-side 3s ease-in-out infinite;
         }
@@ -142,8 +156,10 @@
 <body class="blueprint-bg text-black selection:bg-[#FF8A00] selection:text-white">
 
     <div class="fixed left-0 top-1/2 -translate-y-1/2 z-[100] hidden md:block animate-float-side">
-        <div class="bg-[#7F0019] text-white brutalist-border p-2 brutalist-shadow transform -rotate-90 origin-left -translate-x-full hover:translate-x-0 transition-transform cursor-crosshair">
-            <span class="text-[10px] font-black uppercase tracking-[0.3em] whitespace-nowrap">OFFICIAL_COLLAB_X_VARSIGRAM</span>
+        <div
+            class="bg-[#7F0019] text-white brutalist-border p-2 brutalist-shadow transform -rotate-90 origin-left -translate-x-full hover:translate-x-0 transition-transform cursor-crosshair">
+            <span
+                class="text-[10px] font-black uppercase tracking-[0.3em] whitespace-nowrap">OFFICIAL_COLLAB_X_VARSIGRAM</span>
         </div>
     </div>
 
@@ -205,9 +221,10 @@
                         <div class="text-right font-black uppercase text-4xl">2026<br />EDITION</div>
                     </div>
                     <!-- Varsigram Hero Sticker -->
-                    <div class="absolute -top-12 -right-12 w-32 h-32 bg-[#7F0019] rounded-full border-4 border-black shadow-[4px_4px_0px_0px_#000] flex items-center justify-center animate-rotate-slow z-50">
+                    <div
+                        class="absolute -top-12 -right-12 w-32 h-32 bg-[#7F0019] rounded-full border-4 border-black shadow-[4px_4px_0px_0px_#000] flex items-center justify-center animate-rotate-slow z-50">
                         <div class="text-white font-black text-[8px] uppercase text-center leading-none">
-                            VARSIGRAM <br/> COLLAB <br/> 2026 <br/> EDITION
+                            VARSIGRAM <br /> COLLAB <br /> 2026 <br /> EDITION
                         </div>
                     </div>
                     <div class="bg-black text-white p-4 font-mono text-xs overflow-hidden group">
@@ -233,7 +250,8 @@
             </div>
             <div class="grid grid-cols-2 gap-4 md:gap-8 relative">
                 <!-- Varsigram Corner Sticker -->
-                <div class="absolute -top-4 -right-4 bg-[#7F0019] text-white brutalist-border px-2 py-1 text-[8px] font-black uppercase rotate-6 z-10 shadow-[2px_2px_0px_0px_#000]">
+                <div
+                    class="absolute -top-4 -right-4 bg-[#7F0019] text-white brutalist-border px-2 py-1 text-[8px] font-black uppercase rotate-6 z-10 shadow-[2px_2px_0px_0px_#000]">
                     Official_Partner
                 </div>
                 <div
@@ -249,34 +267,47 @@
             </div>
         </div>
     </section>
-    
+
     <section class="reveal py-20 bg-black text-white border-y-[3px] border-black overflow-hidden select-none">
         <div class="flex whitespace-nowrap animate-marquee">
-            <span class="text-4xl md:text-6xl font-black uppercase italic mx-8">90% HIRE RATE // 90% HIRE RATE // 90% HIRE RATE // 90% HIRE RATE</span>
-            <span class="text-4xl md:text-6xl font-black uppercase italic mx-8">90% HIRE RATE // 90% HIRE RATE // 90% HIRE RATE // 90% HIRE RATE</span>
+            <span class="text-4xl md:text-6xl font-black uppercase italic mx-8">90% HIRE RATE // 90% HIRE RATE // 90%
+                HIRE RATE // 90% HIRE RATE</span>
+            <span class="text-4xl md:text-6xl font-black uppercase italic mx-8">90% HIRE RATE // 90% HIRE RATE // 90%
+                HIRE RATE // 90% HIRE RATE</span>
         </div>
         <style>
             @keyframes marquee {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
+                0% {
+                    transform: translateX(0);
+                }
+
+                100% {
+                    transform: translateX(-50%);
+                }
             }
-            .animate-marquee { animation: marquee 20s linear infinite; }
+
+            .animate-marquee {
+                animation: marquee 20s linear infinite;
+            }
         </style>
     </section>
 
     <section id="metrics" class="reveal py-24 px-6">
         <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
-            <div class="bg-white brutalist-border p-8 brutalist-shadow transform rotate-1 hover:rotate-0 transition-all">
+            <div
+                class="bg-white brutalist-border p-8 brutalist-shadow transform rotate-1 hover:rotate-0 transition-all">
                 <span class="text-xs font-black uppercase tracking-widest text-[#A855F7]">Success_Rate</span>
                 <h4 class="text-6xl font-black italic mt-2">90%</h4>
                 <p class="font-bold text-sm mt-4">Of graduates hired within 6 months of forging.</p>
             </div>
-            <div class="bg-[#FF8A00] brutalist-border p-8 brutalist-shadow transform -rotate-1 hover:rotate-0 transition-all">
+            <div
+                class="bg-[#FF8A00] brutalist-border p-8 brutalist-shadow transform -rotate-1 hover:rotate-0 transition-all">
                 <span class="text-xs font-black uppercase tracking-widest text-white">Community_Size</span>
                 <h4 class="text-6xl font-black italic mt-2">500+</h4>
                 <p class="font-black text-sm mt-4">Digital creators currently in our global network.</p>
             </div>
-            <div class="bg-white brutalist-border p-8 brutalist-shadow transform rotate-2 hover:rotate-0 transition-all">
+            <div
+                class="bg-white brutalist-border p-8 brutalist-shadow transform rotate-2 hover:rotate-0 transition-all">
                 <span class="text-xs font-black uppercase tracking-widest text-black">Average_Jump</span>
                 <h4 class="text-6xl font-black italic mt-2">350%</h4>
                 <p class="font-bold text-sm mt-4">Median salary increase for career-switchers.</p>
@@ -329,14 +360,24 @@
 
     <section id="logos" class="reveal py-24 bg-white border-y-[3px] border-black px-6">
         <div class="max-w-7xl mx-auto">
-            <p class="text-center font-black uppercase tracking-[0.4em] mb-12 text-[#A855F7] text-xs">Partners_&_Network_Hiring</p>
-            <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
-                <span class="text-3xl md:text-5xl font-black tracking-tighter hover:scale-110 transition-transform">PAYSTACK</span>
-                <span class="text-3xl md:text-5xl font-black tracking-tighter hover:scale-110 transition-transform italic">FLUTTERWAVE</span>
-                <span class="text-3xl md:text-5xl font-black tracking-tighter hover:scale-110 transition-transform text-[#7F0019] italic underline decoration-[4px]">VARSIGRAM</span>
-                <span class="text-3xl md:text-5xl font-black tracking-tighter hover:scale-110 transition-transform underline decoration-[#FF8A00]">KUDA</span>
-                <span class="text-3xl md:text-5xl font-black tracking-tighter hover:scale-110 transition-transform">ANDELA</span>
-                <span class="text-3xl md:text-5xl font-black tracking-tighter hover:scale-110 transition-transform italic underline text-[#A855F7]">MONIEPOINT</span>
+            <p class="text-center font-black uppercase tracking-[0.4em] mb-12 text-[#A855F7] text-xs">
+                Partners_&_Network_Hiring</p>
+            <div
+                class="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
+                <span
+                    class="text-3xl md:text-5xl font-black tracking-tighter hover:scale-110 transition-transform">PAYSTACK</span>
+                <span
+                    class="text-3xl md:text-5xl font-black tracking-tighter hover:scale-110 transition-transform italic">FLUTTERWAVE</span>
+                <span
+                    class="text-3xl md:text-5xl font-black tracking-tighter hover:scale-110 transition-transform text-[#7F0019] italic underline decoration-[4px]">VARSIGRAM</span>
+                <span
+                    class="text-3xl md:text-5xl font-black tracking-tighter hover:scale-110 transition-transform text-blue-700 italic border-2 border-blue-700 px-2 leading-none">GRAVITYLAB</span>
+                <span
+                    class="text-3xl md:text-5xl font-black tracking-tighter hover:scale-110 transition-transform underline decoration-[#FF8A00]">KUDA</span>
+                <span
+                    class="text-3xl md:text-5xl font-black tracking-tighter hover:scale-110 transition-transform">ANDELA</span>
+                <span
+                    class="text-3xl md:text-5xl font-black tracking-tighter hover:scale-110 transition-transform italic underline text-[#A855F7]">MONIEPOINT</span>
             </div>
         </div>
     </section>
@@ -388,7 +429,8 @@
                         </div>
                     </div>
                     <!-- Varsigram Small Sticker -->
-                    <div class="absolute -bottom-2 -left-2 bg-[#7F0019] text-white brutalist-border px-3 py-1 text-[8px] font-black uppercase -rotate-12 z-10">
+                    <div
+                        class="absolute -bottom-2 -left-2 bg-[#7F0019] text-white brutalist-border px-3 py-1 text-[8px] font-black uppercase -rotate-12 z-10">
                         VRSGRM_APPROVED
                     </div>
                 </div>
@@ -398,25 +440,31 @@
 
     <section id="testimonials" class="reveal py-24 bg-[#FF8A00] border-y-[3px] border-black px-6 overflow-hidden">
         <div class="max-w-7xl mx-auto">
-            <h3 class="text-4xl md:text-6xl font-black tracking-tighter mb-16 uppercase italic text-white" style="text-shadow: 4px 4px 0px #000;">Direct_Transmissions</h3>
+            <h3 class="text-3xl md:text-6xl font-black tracking-tighter mb-16 uppercase italic text-white"
+                style="text-shadow: 4px 4px 0px #000;">Direct_Transmissions</h3>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-white brutalist-border p-8 brutalist-shadow transition-all hover:-translate-y-2">
-                    <p class="text-xl font-bold italic mb-6">"SparkCode didn't just teach me code; they taught me how to survive and thrive in Lagos tech. I went from zero to Junior Frontend in 4 months."</p>
+                    <p class="text-xl font-bold italic mb-6">"SparkCode didn't just teach me code; they taught me how to
+                        survive and thrive in Lagos tech. I went from zero to Junior Frontend in 4 months."</p>
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 bg-black text-white flex items-center justify-center font-black">AS</div>
                         <div>
                             <p class="font-black uppercase text-sm">Adebayo Samuel</p>
-                            <p class="text-[10px] font-bold text-[#A855F7] uppercase tracking-widest">Frontend @ Paystack</p>
+                            <p class="text-[10px] font-bold text-[#A855F7] uppercase tracking-widest">Frontend @
+                                Paystack</p>
                         </div>
                     </div>
                 </div>
-                <div class="bg-black text-white brutalist-border p-8 shadow-[8px_8px_0px_0px_#A855F7] transition-all hover:-translate-y-2">
-                    <p class="text-xl font-bold italic mb-6">"The pressure is real, but the results are undeniable. The product design track gave me the portfolio I needed to land my dream job."</p>
+                <div
+                    class="bg-black text-white brutalist-border p-8 shadow-[8px_8px_0px_0px_#A855F7] transition-all hover:-translate-y-2">
+                    <p class="text-xl font-bold italic mb-6">"The pressure is real, but the results are undeniable. The
+                        product design track gave me the portfolio I needed to land my dream job."</p>
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 bg-white text-black flex items-center justify-center font-black">CO</div>
                         <div>
                             <p class="font-black uppercase text-sm">Chinwe Obi</p>
-                            <p class="text-[10px] font-bold text-[#FF8A00] uppercase tracking-widest">UI/UX Designer @ Brass</p>
+                            <p class="text-[10px] font-bold text-[#FF8A00] uppercase tracking-widest">UI/UX Designer @
+                                Brass</p>
                         </div>
                     </div>
                 </div>
@@ -469,10 +517,15 @@
                         class="neo-btn bg-black text-white px-8 py-4 font-black uppercase text-sm">Enroll</a>
                 </div>
             </div>
-            <!-- Floating Collab Text -->
-            <div class="mt-8 text-center md:text-left">
-                <span class="inline-block bg-[#7F0019] text-white brutalist-border px-4 py-2 text-[10px] font-black uppercase tracking-widest animate__animated animate__pulse animate__infinite">
+            <!-- Strategic Alliance Callouts -->
+            <div class="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
+                <span
+                    class="inline-block bg-[#7F0019] text-white brutalist-border px-4 py-2 text-[10px] font-black uppercase tracking-widest animate__animated animate__pulse animate__infinite">
                     Powered_By_Varsigram_Network
+                </span>
+                <span
+                    class="inline-block bg-blue-700 text-white brutalist-border px-4 py-2 text-[10px] font-black uppercase tracking-widest">
+                    Internship_Fast_Track_@_GravityLabNg
                 </span>
             </div>
         </div>
@@ -480,35 +533,48 @@
 
     <section id="faq" class="reveal py-24 px-6 border-y-[3px] border-black bg-white">
         <div class="max-w-4xl mx-auto">
-            <h3 class="text-4xl md:text-5xl font-black tracking-tighter mb-16 uppercase italic text-center underline decoration-[8px] decoration-[#A855F7]">The_Forge_Intelligence</h3>
+            <h3
+                class="text-2xl md:text-5xl font-black tracking-tighter mb-16 uppercase italic text-center underline decoration-[8px] decoration-[#A855F7]">
+                The_Forge_Intelligence</h3>
             <div class="space-y-4">
-                <details class="group bg-white brutalist-border p-6 hover:bg-[#FF8A00] transition-colors cursor-pointer">
+                <details
+                    class="group bg-white brutalist-border p-6 hover:bg-[#FF8A00] transition-colors cursor-pointer">
                     <summary class="flex justify-between items-center font-black uppercase text-sm list-none">
                         <span>Do I need a laptop?</span>
                         <span class="group-open:rotate-180 transition-transform">▼</span>
                     </summary>
-                    <p class="mt-4 font-bold text-xs leading-relaxed uppercase">Absolutely. Minimum 8GB RAM and an SSD. We build high-voltage software; you need the hardware to handle the current.</p>
+                    <p class="mt-4 font-bold text-xs leading-relaxed uppercase">Absolutely. Minimum 8GB RAM and an SSD.
+                        We build high-voltage software; you need the hardware to handle the current.</p>
                 </details>
-                <details class="group bg-white brutalist-border p-6 hover:bg-[#A855F7] transition-colors cursor-pointer">
-                    <summary class="flex justify-between items-center font-black uppercase text-sm list-none group-hover:text-white">
+                <details
+                    class="group bg-white brutalist-border p-6 hover:bg-[#A855F7] transition-colors cursor-pointer">
+                    <summary
+                        class="flex justify-between items-center font-black uppercase text-sm list-none group-hover:text-white">
                         <span class="group-hover:text-white">Is it fully remote?</span>
                         <span class="group-open:rotate-180 transition-transform group-hover:text-white">▼</span>
                     </summary>
-                    <p class="mt-4 font-bold text-xs leading-relaxed uppercase group-hover:text-white">We are a remote-first lab, but we hold intensive physical "Forge Days" in Yaba, Lagos for deep collaboration.</p>
+                    <p class="mt-4 font-bold text-xs leading-relaxed uppercase group-hover:text-white">We are a
+                        remote-first lab, but we hold intensive physical "Forge Days" in Yaba, Lagos for deep
+                        collaboration.</p>
                 </details>
                 <details class="group bg-white brutalist-border p-6 hover:bg-black transition-colors cursor-pointer">
-                    <summary class="flex justify-between items-center font-black uppercase text-sm list-none group-hover:text-white">
+                    <summary
+                        class="flex justify-between items-center font-black uppercase text-sm list-none group-hover:text-white">
                         <span class="group-hover:text-white">What is the cost?</span>
                         <span class="group-open:rotate-180 transition-transform group-hover:text-white">▼</span>
                     </summary>
-                    <p class="mt-4 font-bold text-xs leading-relaxed uppercase group-hover:text-white">Admission is competitive. We offer tiered pricing and flexible payment plans for selected Sparks. Transmit your application for a full breakdown.</p>
+                    <p class="mt-4 font-bold text-xs leading-relaxed uppercase group-hover:text-white">Admission is
+                        competitive. We offer tiered pricing and flexible payment plans for selected Sparks. Transmit
+                        your application for a full breakdown.</p>
                 </details>
-                <details class="group bg-white brutalist-border p-6 hover:bg-[#FF8A00] transition-colors cursor-pointer">
+                <details
+                    class="group bg-white brutalist-border p-6 hover:bg-[#FF8A00] transition-colors cursor-pointer">
                     <summary class="flex justify-between items-center font-black uppercase text-sm list-none">
                         <span>What if I have zero experience?</span>
                         <span class="group-open:rotate-180 transition-transform">▼</span>
                     </summary>
-                    <p class="mt-4 font-bold text-xs leading-relaxed uppercase">We prefer raw potential over bad habits. If you have the hunger and the logic, we will forge the skill.</p>
+                    <p class="mt-4 font-bold text-xs leading-relaxed uppercase">We prefer raw potential over bad habits.
+                        If you have the hunger and the logic, we will forge the skill.</p>
                 </details>
             </div>
         </div>
@@ -539,8 +605,8 @@
                 <textarea required name="Message" placeholder="MISSION STATEMENT / WHY YOU?" rows="4"
                     class="w-full bg-slate-50 brutalist-border p-4 font-black uppercase text-xs focus:outline-none focus:ring-4 focus:ring-[#A855F7] transition-all resize-none"></textarea>
                 <button type="submit"
-                    class="neo-btn w-full py-5 bg-black text-white font-black uppercase tracking-widest text-sm shadow-[6px_6px_0px_0px_#A855F7]">Transmit
-                    Application</button>
+                    class="neo-btn w-full py-5 bg-black text-white font-black uppercase tracking-widest text-sm shadow-[6px_6px_0px_0px_#A855F7]">
+                    Enroll Now</button>
             </form>
         </div>
     </section>
@@ -557,7 +623,8 @@
             <div class="text-[10px] font-black uppercase tracking-widest opacity-40">Lagos, Nigeria</div>
         </div>
         <div class="max-w-7xl mx-auto mt-8 pt-8 border-t-[3px] border-black text-center">
-            <p class="text-[10px] font-black uppercase tracking-[0.5em] text-[#7F0019]">SparkCode Academy x Varsigram © 2026 Collaboration</p>
+            <p class="text-[10px] font-black uppercase tracking-[0.5em] text-[#7F0019]">SparkCode Academy x Varsigram ©
+                2026 Collaboration</p>
         </div>
     </footer>
 
