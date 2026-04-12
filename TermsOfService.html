@@ -1,49 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service | SparkCode Academy</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700;800&family=Outfit:wght@800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        spark: { orange: '#FF8A00', purple: '#A855F7', black: '#191A23', silver: '#F3F3F3' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        head: ['Space Grotesk', 'sans-serif'],
+                        logo: ['Outfit', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'brut-sm': '4px 4px 0px 0px #191A23',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-slate-50 text-slate-800">
-    <div class="max-w-4xl mx-auto px-6 py-20">
-        <a href="index.html" class="text-purple-600 font-bold mb-8 inline-block">← Back to Home</a>
-        <h1 class="text-4xl md:text-5xl font-black mb-4">Terms of <span class="text-orange-500">Service</span></h1>
-        <p class="text-slate-500 mb-12 italic">Effective Date: December 20, 2025</p>
 
-        <div class="space-y-8 leading-relaxed">
-            <section>
-                <h2 class="text-2xl font-bold mb-4">1. Acceptance of Terms</h2>
-                <p>By enrolling in SparkCode Academy’s courses (Frontend, Graphics, or Product Design), you agree to be bound by these terms. If you do not agree, please do not use our services.</p>
-            </section>
-
-            <section>
-                <h2 class="text-2xl font-bold mb-4">2. Enrollment & Fees</h2>
-                <p>Enrollment is only confirmed once the registration process is complete. Fees for courses must be paid according to the schedule provided at the time of enrollment. All fees are non-refundable unless stated otherwise in a specific promotional offer.</p>
-            </section>
-
-            <section>
-                <h2 class="text-2xl font-bold mb-4">3. Intellectual Property</h2>
-                <p>All course materials, including videos, code snippets, and design assets provided by Jafar, Zayd, or Muhsin, are the property of SparkCode Academy. You are granted a personal, non-transferable license to use these for your own learning.</p>
-            </section>
-
-            <section>
-                <h2 class="text-2xl font-bold mb-4">4. Student Conduct</h2>
-                <p>We believe in a supportive "Spark" community. Any form of harassment, plagiarism of other students' work, or disruptive behavior during live sessions may lead to termination of your enrollment without refund.</p>
-            </section>
-
-            <section>
-                <h2 class="text-2xl font-bold mb-4">5. Disclaimer</h2>
-                <p>While we provide expert-led training and 24/7 mentor support, SparkCode Academy does not guarantee specific job placement or salary outcomes. Success depends on the student’s dedication and practice.</p>
-            </section>
-
-            <div class="py-10 border-t border-slate-200 text-center">
-                <p class="text-slate-400 font-bold uppercase tracking-widest text-xs">SparkCode Academy &copy; 2025</p>
+<body class="bg-white text-spark-black font-sans">
+    <!-- Tiny Nav -->
+    <nav class="p-8 border-b-2 border-spark-black">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+             <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-spark-orange border-2 border-spark-black rounded flex items-center justify-center shadow-brut-sm">
+                    <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <a href="index.html" class="font-logo text-xl uppercase font-black tracking-tighter">SparkCode</a>
             </div>
+            <a href="index.html" class="font-bold underline">Back Home</a>
         </div>
-    </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto p-8 md:py-24">
+        <h1 class="font-head text-5xl font-black mb-12">Terms of Service</h1>
+        
+        <div class="space-y-12 text-lg leading-relaxed font-medium text-gray-700">
+            <section>
+                <h2 class="text-2xl font-black text-spark-black mb-4 uppercase tracking-tight">Acceptance of Terms</h2>
+                <p>By applying to SparkCode Academy, you agree to be bound by these terms. Our curriculum and cohort schedules are subject to change based on the forge masters' discretion.</p>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-black text-spark-black mb-4 uppercase tracking-tight">Academy Code of Conduct</h2>
+                <p>Students are expected to maintain professional standards of collaboration, respect, and technical integrity. Failure to do so may result in removal from the current cohort.</p>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-black text-spark-black mb-4 uppercase tracking-tight">Intellectual Property</h2>
+                <p>All curriculum materials provided by SparkCode Academy are protected by copyright. You may not distribute or reproduce these materials without explicit written permission.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="p-8 border-t-2 border-spark-black text-center text-gray-500 font-bold">
+        © 2026 SparkCode Academy
+    </footer>
 </body>
 </html>

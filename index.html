@@ -2,699 +2,539 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SparkCode Academy | Forge Your Future</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700;800&family=Outfit:wght@800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-    <style>
-        body {
-            font-family: 'Space Grotesk', sans-serif;
-            background-color: #fdfcf9;
-            overflow-x: hidden;
-        }
-
-        .brutalist-border {
-            border: 3px solid #000;
-        }
-
-        .brutalist-shadow {
-            box-shadow: 4px 4px 0px 0px #000;
-        }
-
-        @media (min-width: 768px) {
-            .brutalist-shadow {
-                box-shadow: 8px 8px 0px 0px #000;
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        spark: {
+                            orange: '#FF8A00',
+                            purple: '#A855F7',
+                            black: '#191A23',
+                            silver: '#F3F3F3',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        head: ['Space Grotesk', 'sans-serif'],
+                        logo: ['Outfit', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 5s ease-in-out infinite',
+                        'marquee': 'marquee 25s linear infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    },
+                    boxShadow: {
+                        'brut': '8px 8px 0px 0px #191A23',
+                        'brut-sm': '4px 4px 0px 0px #191A23',
+                        'brut-purple': '6px 6px 0px 0px #A855F7',
+                    }
+                }
             }
         }
-
-        .blueprint-bg {
-            background-image: radial-gradient(#e5e7eb 1.5px, transparent 1.5px);
-            background-size: 20px 20px;
-        }
-
-        .neo-btn {
-            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-        }
-
-        .neo-btn:hover {
-            transform: translate(-4px, -4px);
-            box-shadow: 12px 12px 0px 0px #000;
-        }
-
-        .neo-btn:active {
-            transform: translate(2px, 2px);
-            box-shadow: 0px 0px 0px 0px #000;
-        }
-
-        /* Custom "Crazy" Animations */
-        @keyframes float {
-            0% {
-                transform: translateY(0px) rotate(3deg);
+    </script>
+    <style type="text/tailwindcss">
+        @layer components {
+            .btn-brut {
+                @apply inline-flex items-center justify-center px-8 py-4 border-2 border-spark-black font-bold rounded-2xl transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-brut active:translate-x-0 active:translate-y-0 active:shadow-none;
             }
-
-            50% {
-                transform: translateY(-20px) rotate(5deg);
+            .label-pill {
+                @apply px-4 py-1 rounded-lg border-[1px] border-spark-black font-head font-bold text-xl inline-block;
             }
-
-            100% {
-                transform: translateY(0px) rotate(3deg);
+            .section-padding {
+                @apply py-24;
             }
-        }
-
-        .animate-float {
-            animation: float 4s ease-in-out infinite;
-        }
-
-        @keyframes glitch {
-            0% {
-                transform: skew(0deg);
+            .reveal {
+                @apply opacity-0 translate-y-12 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)];
             }
-
-            20% {
-                transform: skew(-1deg);
+            .reveal.active {
+                @apply opacity-100 translate-y-0;
             }
-
-            40% {
-                transform: skew(1deg);
-            }
-
-            60% {
-                transform: skew(-0.5deg);
-            }
-
-            100% {
-                transform: skew(0deg);
-            }
-        }
-
-        .glitch-text:hover {
-            animation: glitch 0.3s linear infinite;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #000;
-            border-radius: 10px;
-        }
-
-        @keyframes rotate-slow {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .animate-rotate-slow {
-            animation: rotate-slow 15s linear infinite;
-        }
-
-        @keyframes float-side {
-
-            0%,
-            100% {
-                transform: translateY(-50%) translateX(0);
-            }
-
-            50% {
-                transform: translateY(-50%) translateX(10px);
-            }
-        }
-
-        .animate-float-side {
-            animation: float-side 3s ease-in-out infinite;
         }
     </style>
 </head>
 
-<body class="blueprint-bg text-black selection:bg-[#FF8A00] selection:text-white">
+<body class="bg-white text-spark-black font-sans selection:bg-spark-orange selection:text-white">
 
-    <div class="fixed left-0 top-1/2 -translate-y-1/2 z-[100] hidden md:block animate-float-side">
-        <div
-            class="bg-[#7F0019] text-white brutalist-border p-2 brutalist-shadow transform -rotate-90 origin-left -translate-x-full hover:translate-x-0 transition-transform cursor-crosshair">
-            <span
-                class="text-[10px] font-black uppercase tracking-[0.3em] whitespace-nowrap">OFFICIAL_COLLAB_X_VARSIGRAM</span>
-        </div>
-    </div>
-
-    <header class="fixed top-0 w-full z-50 px-4 py-4 md:py-6 animate__animated animate__fadeInDown">
-        <nav
-            class="max-w-7xl mx-auto flex items-center justify-between bg-white brutalist-border p-3 md:p-4 shadow-[4px_4px_0px_0px_#000]">
-            <div class="flex items-center gap-2 md:gap-3">
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b-2 border-spark-black px-3 md:px-6">
+        <div class="max-w-7xl mx-auto h-24 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-3 flex-1">
                 <div
-                    class="w-8 h-8 md:w-10 md:h-10 bg-[#FF8A00] brutalist-border flex items-center justify-center transform -rotate-3 hover:rotate-180 transition-transform duration-500">
-                    <svg class="w-5 h-5 md:w-6 md:h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                    class="w-10 h-10 bg-spark-orange border-2 border-spark-black rounded-lg flex items-center justify-center shadow-brut-sm hover:rotate-12 transition-transform cursor-pointer">
+                    <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                 </div>
-                <a href="./index.html"
-                    class="text-base md:text-xl font-black uppercase tracking-tighter hover:tracking-widest transition-all"
-                    style="font-family: 'Outfit';">Spark<span class="text-[#A855F7]">Code</span></a>
+                <a href="index.html"
+                    class="font-logo text-xl md:text-2xl uppercase font-black tracking-tighter">SparkCode</a>
             </div>
 
-            <div class="hidden lg:flex gap-8 text-[10px] font-black uppercase tracking-widest">
-                <a href="#about" class="hover:text-[#FF8A00] hover:scale-110 transition-transform">About</a>
-                <a href="#services" class="hover:text-[#A855F7] hover:scale-110 transition-transform">Services</a>
-                <a href="#team" class="hover:text-[#FF8A00] hover:scale-110 transition-transform">Team</a>
-                <a href="#courses" class="hover:text-[#A855F7] hover:scale-110 transition-transform">Courses</a>
-            </div>
+            <!-- Links -->
+            <nav class="hidden md:flex items-center justify-center gap-8 flex-2 font-medium">
+                <a href="#about" class="hover:underline transition-all">About us</a>
+                <a href="#services" class="hover:underline transition-all">Services</a>
+                <a href="#team" class="hover:underline transition-all">Team</a>
+                <a href="#courses" class="hover:underline transition-all">Courses</a>
+            </nav>
 
-            <a href="#contact"
-                class="neo-btn bg-black text-white px-4 md:px-6 py-2 text-[10px] font-bold uppercase tracking-widest brutalist-border shadow-[3px_3px_0px_0px_#A855F7]">Apply
-                Now</a>
-        </nav>
+            <!-- CTA -->
+            <div class="flex-1 flex justify-end">
+                <a href="#contact" class="btn-brut bg-white text-base md:text-sm md:py-3 md:px-6">Apply Now</a>
+            </div>
+        </div>
     </header>
 
-    <section class="relative pt-32 md:pt-52 pb-20 md:pb-40 px-6">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-            <div class="text-center lg:text-left animate__animated animate__fadeInLeft">
-                <span
-                    class="inline-block bg-[#A855F7] text-white brutalist-border px-4 py-1 text-xs font-bold uppercase mb-6 shadow-[4px_4px_0px_0px_#000] animate__animated animate__pulse animate__infinite">Lagos'
-                    Premier Dev Lab</span>
-                <h1
-                    class="text-5xl md:text-8xl font-black leading-[0.85] tracking-tighter mb-8 italic glitch-text transition-all">
-                    IGNITE <br />YOUR <span class="text-[#FF8A00]">CODE.</span></h1>
-                <p class="text-lg md:text-xl font-bold mb-10 max-w-lg mx-auto lg:mx-0 border-l-8 border-black pl-6">Zero
-                    fluff. High voltage. We build the engineers and designers that power the African tech economy.</p>
-                <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
-                    <a href="#courses"
-                        class="neo-btn bg-[#FF8A00] brutalist-border px-10 py-5 font-black uppercase brutalist-shadow">View
-                        Courses</a>
-                    <a href="#contact"
-                        class="neo-btn bg-white brutalist-border px-10 py-5 font-black uppercase brutalist-shadow">Join
-                        Cohort</a>
-                </div>
-            </div>
-            <div class=" relative animate__animated animate__zoomIn">
-                <div
-                    class="w-full aspect-square bg-white brutalist-border brutalist-shadow p-10 flex flex-col justify-between animate-float">
-                    <div class="flex justify-between items-start">
-                        <div
-                            class="w-20 h-20 bg-[#A855F7] brutalist-border shadow-[4px_4px_0px_0px_#000] hover:bg-black transition-colors duration-500">
-                        </div>
-                        <div class="text-right font-black uppercase text-4xl">2026<br />EDITION</div>
-                    </div>
-                    <!-- Varsigram Hero Sticker (Safe positioning for mobile) -->
-                    <div
-                        class="absolute top-4 right-4 md:-top-12 md:-right-12 w-20 h-20 md:w-32 md:h-32 bg-[#7F0019] rounded-full border-4 border-black shadow-[4px_4px_0px_0px_#000] flex items-center justify-center animate-rotate-slow z-50">
-                        <div class="text-white font-black text-[6px] md:text-[8px] uppercase text-center leading-none">
-                            VARSIGRAM <br /> COLLAB <br /> 2026 <br /> EDITION
-                        </div>
-                    </div>
-                    <div class="bg-black text-white p-4 font-mono text-xs overflow-hidden group">
-                        <span class="inline-block group-hover:translate-x-full transition-transform duration-1000"> >
-                            npm install success --global </span>
-                    </div>
-                </div>
-            </div>
+    <main class="relative overflow-hidden">
+        <!-- Dot Grid Vibe -->
+        <div
+            class="absolute inset-0 z-[-1] opacity-10 [background-image:radial-gradient('#191A23'_1px,transparent_1px)] [background-size:24px_24px]">
         </div>
-    </section>
 
-    <section id="about" class="reveal py-24 bg-white border-y-[3px] border-black px-6">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div class="space-y-6">
-                <h3 class="text-4xl md:text-6xl font-black tracking-tighter uppercase italic text-[#A855F7]">The
-                    Mission.</h3>
-                <p class="text-xl font-bold leading-tight">SparkCode Academy Lagos is a high-pressure forge for the next
-                    generation of digital creators.</p>
-                <p class="text-slate-600 font-medium">Traditional degrees take too long. We've condensed the essential
-                    skills for the modern economy into intensive, project-led tracks. Whether it's shipping
-                    production-ready code or designing world-class interfaces, we train you to deliver at a global
-                    standard from the heart of Lagos.</p>
-            </div>
-            <div class="grid grid-cols-2 gap-4 md:gap-8 relative">
-                <!-- Varsigram Corner Sticker (Responsive) -->
-                <div
-                    class="absolute -top-2 right-0 md:-top-4 md:-right-4 bg-[#7F0019] text-white brutalist-border px-2 py-1 text-[8px] font-black uppercase rotate-6 z-10 shadow-[2px_2px_0px_0px_#000]">
-                    Official_Partner
-                </div>
-                <div
-                    class="p-8 bg-[#FF8A00] brutalist-border brutalist-shadow text-center hover:scale-105 transition-transform cursor-pointer">
-                    <span class="block text-4xl font-black italic">LAG</span>
-                    <span class="text-[10px] font-black uppercase">Innovation Hub</span>
-                </div>
-                <div
-                    class="p-8 bg-black text-white brutalist-border shadow-[6px_6px_0px_0px_#A855F7] text-center hover:-translate-y-2 transition-transform cursor-pointer">
-                    <span class="block text-4xl font-black italic">100%</span>
-                    <span class="text-[10px] font-black uppercase">Job Ready</span>
+        <!-- Hero Section -->
+        <section class="max-w-7xl mx-auto px-6 section-padding grid lg:grid-cols-2 grid-cols-1 items-center gap-12">
+            <div class="reveal">
+                <h1 class="font-head text-5xl md:text-6xl lg:text-[5rem] font-bold leading-[1.05] tracking-tight mb-8">
+                    Igniting the <span
+                        class="bg-spark-orange px-2 border-2 border-spark-black shadow-brut-sm">digital</span> landscape
+                    for success
+                </h1>
+                <p class="text-xl text-gray-600 mb-10 max-w-lg font-medium leading-relaxed">
+                    Lagos' premier dev lab building the software and brands that power the African tech economy.
+                    High-pressure training for high-voltage creators.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="btn-brut bg-spark-black text-white px-10">Book a consultation</a>
+                    <a href="#courses" class="btn-brut bg-white text-spark-black">Explore Tracks</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- <section class="reveal py-20 bg-black text-white border-y-[3px] border-black overflow-hidden select-none">
-        <div class="flex whitespace-nowrap animate-marquee">
-            <span class="text-4xl md:text-6xl font-black uppercase italic mx-8">90% HIRE RATE // 90% HIRE RATE // 90%
-                HIRE RATE // 90% HIRE RATE</span>
-            <span class="text-4xl md:text-6xl font-black uppercase italic mx-8">90% HIRE RATE // 90% HIRE RATE // 90%
-                HIRE RATE // 90% HIRE RATE</span>
-        </div>
-        <style>
-            @keyframes marquee {
-                0% {
-                    transform: translateX(0);
-                }
-
-                100% {
-                    transform: translateX(-50%);
-                }
-            }
-
-            .animate-marquee {
-                animation: marquee 20s linear infinite;
-            }
-        </style>
-    </section> -->
-
-    <!-- <section id="metrics" class="reveal py-24 px-6">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
-            <div
-                class="bg-white brutalist-border p-8 brutalist-shadow transform rotate-1 hover:rotate-0 transition-all">
-                <span class="text-xs font-black uppercase tracking-widest text-[#A855F7]">Success_Rate</span>
-                <h4 class="text-6xl font-black italic mt-2">90%</h4>
-                <p class="font-bold text-sm mt-4">Of graduates hired within 6 months of forging.</p>
-            </div>
-            <div
-                class="bg-[#FF8A00] brutalist-border p-8 brutalist-shadow transform -rotate-1 hover:rotate-0 transition-all">
-                <span class="text-xs font-black uppercase tracking-widest text-white">Community_Size</span>
-                <h4 class="text-6xl font-black italic mt-2">500+</h4>
-                <p class="font-black text-sm mt-4">Digital creators currently in our global network.</p>
-            </div>
-            <div
-                class="bg-white brutalist-border p-8 brutalist-shadow transform rotate-2 hover:rotate-0 transition-all">
-                <span class="text-xs font-black uppercase tracking-widest text-black">Average_Jump</span>
-                <h4 class="text-6xl font-black italic mt-2">350%</h4>
-                <p class="font-bold text-sm mt-4">Median salary increase for career-switchers.</p>
-            </div>
-        </div>
-    </section> -->
-
-    <section id="services" class="reveal py-24 px-6">
-        <div class="max-w-7xl mx-auto">
-            <h3
-                class="text-4xl font-black tracking-tighter mb-12 uppercase italic underline decoration-[10px] decoration-[#FF8A00]">
-                Expertise_Stack</h3>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div
-                    class="bg-white brutalist-border p-8 brutalist-shadow hover:-rotate-2 transition-all cursor-crosshair">
-                    <div
-                        class="w-12 h-12 bg-black text-white brutalist-border mb-6 flex items-center justify-center font-black">
-                        01</div>
-                    <h4 class="text-2xl font-black uppercase mb-4">Frontend Development</h4>
-                    <p class="text-sm font-bold text-slate-500 uppercase leading-none mb-4 tracking-tighter">React &
-                        Modern Web</p>
-                    <p class="text-sm font-medium">Building fast, responsive, and interactive web applications that
-                        scale.</p>
-                </div>
-                <div
-                    class="bg-white brutalist-border p-8 brutalist-shadow hover:rotate-2 transition-all cursor-crosshair">
-                    <div
-                        class="w-12 h-12 bg-[#A855F7] text-white brutalist-border mb-6 flex items-center justify-center font-black">
-                        02</div>
-                    <h4 class="text-2xl font-black uppercase mb-4">Graphic Design</h4>
-                    <p class="text-sm font-bold text-slate-500 uppercase leading-none mb-4 tracking-tighter">Branding &
-                        Identity</p>
-                    <p class="text-sm font-medium">Mastering visual communication, typography, and professional brand
-                        systems.</p>
-                </div>
-                <div
-                    class="bg-white brutalist-border p-8 brutalist-shadow hover:-translate-y-4 transition-all cursor-crosshair sm:col-span-2 lg:col-span-1">
-                    <div
-                        class="w-12 h-12 bg-[#FF8A00] text-black brutalist-border mb-6 flex items-center justify-center font-black">
-                        03</div>
-                    <h4 class="text-2xl font-black uppercase mb-4">Product Design</h4>
-                    <p class="text-sm font-bold text-slate-500 uppercase leading-none mb-4 tracking-tighter">UI/UX
-                        Strategy</p>
-                    <p class="text-sm font-medium">Solving user problems through research, wireframing, and Figma
-                        prototyping.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="logos" class="reveal py-24 bg-white border-y-[3px] border-black px-6">
-        <div class="max-w-7xl mx-auto">
-            <p class="text-center font-black uppercase tracking-[0.4em] mb-12 text-[#A855F7] text-xs">
-                Partners_&_Network_Hiring</p>
-            <div
-                class="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
-                <span
-                    class="text-3xl md:text-5xl font-black tracking-tighter hover:scale-110 transition-transform">PAYSTACK</span>
-                <span
-                    class="text-3xl md:text-5xl font-black tracking-tighter hover:scale-110 transition-transform italic">FLUTTERWAVE</span>
-                <span
-                    class="text-3xl md:text-5xl font-black tracking-tighter hover:scale-110 transition-transform text-[#7F0019] italic underline decoration-[4px]">VARSIGRAM</span>
-                <span
-                    class="text-3xl md:text-5xl font-black tracking-tighter hover:scale-110 transition-transform text-blue-700 italic border-2 border-blue-700 px-2 leading-none">GRAVITYLAB</span>
-                <span
-                    class="text-3xl md:text-5xl font-black tracking-tighter hover:scale-110 transition-transform underline decoration-[#FF8A00]">KUDA</span>
-                <span
-                    class="text-3xl md:text-5xl font-black tracking-tighter hover:scale-110 transition-transform">ANDELA</span>
-                <span
-                    class="text-3xl md:text-5xl font-black tracking-tighter hover:scale-110 transition-transform italic underline text-[#A855F7]">MONIEPOINT</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="team" class="reveal py-24 bg-black text-white px-6 overflow-hidden">
-        <div class="max-w-7xl mx-auto">
-            <h3 class="text-4xl md:text-7xl font-black tracking-tighter mb-20 text-center uppercase italic">
-                The_Instructors</h3>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-12">
-                <div class="group relative">
-                    <div
-                        class="bg-white brutalist-border p-2 brutalist-shadow transition-transform group-hover:scale-105">
-                        <div
-                            class="h-64 bg-slate-300 border-2 border-black mb-4 flex items-center justify-center overflow-hidden">
-                            <img src="./Images/Zayd.png" alt="" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4 text-black">
-                            <h4 class="text-2xl font-black uppercase">Zayd Tahir</h4>
-                            <p class="text-[10px] font-black text-[#FF8A00] uppercase tracking-widest">Frontend Lead</p>
-                        </div>
+            <div class="flex justify-center lg:justify-end reveal relative">
+                <!-- Custom Neobrutalist Student Illustration -->
+                <div class="relative w-full max-w-[500px] aspect-square animate-float">
+                    <svg viewBox="0 0 500 500" fill="none" class="w-full h-full drop-shadow-2xl">
+                        <!-- Background Shape -->
+                        <rect x="50" y="50" width="380" height="380" rx="40" fill="#A855F7" stroke="#191A23" stroke-width="8" />
+                        <rect x="70" y="70" width="380" height="380" rx="40" fill="#FF8A00" stroke="#191A23" stroke-width="8" />
+                        
+                        <!-- Screen/Laptop -->
+                        <rect x="120" y="280" width="260" height="150" rx="10" fill="#191A23" stroke="#F3F3F3" stroke-width="4" />
+                        <rect x="140" y="300" width="220" height="110" rx="4" fill="#191A23" opacity="0.8" />
+                        
+                        <!-- Code Lines inside Screen -->
+                        <rect x="155" y="315" width="80" height="8" rx="2" fill="#FF8A00" />
+                        <rect x="155" y="335" width="120" height="8" rx="2" fill="#A855F7" />
+                        <rect x="155" y="355" width="60" height="8" rx="2" fill="#F3F3F3" />
+                        
+                        <!-- Hands/Person Stylized -->
+                        <circle cx="250" cy="180" r="60" fill="#191A23" />
+                        <rect x="190" y="220" width="120" height="80" rx="20" fill="#191A23" />
+                        
+                        <!-- Accents -->
+                        <circle cx="400" cy="100" r="30" fill="white" stroke="#191A23" stroke-width="4" />
+                        <path d="M400 85v30M385 100h30" stroke="#191A23" stroke-width="4" stroke-linecap="round" />
+                    </svg>
+                    <!-- Floating Decor -->
+                    <div class="absolute -top-10 -right-10 w-24 h-24 bg-white border-4 border-spark-black rounded-full flex items-center justify-center font-black text-4xl shadow-brut-sm rotate-12">
+                        &lt;/&gt;
                     </div>
                 </div>
-                <div class="group relative">
-                    <div
-                        class="bg-white brutalist-border p-2 brutalist-shadow transition-transform group-hover:scale-105">
-                        <div
-                            class="h-64 bg-slate-300 border-2 border-black mb-4 flex items-center justify-center overflow-hidden">
-                            <!-- <span class="text-8xl grayscale group-hover:grayscale-0 group-hover:-rotate-12 transition-all duration-300">🎨</span> -->
-                            <img src="./Images/Jafar.jpeg" alt="">
-                        </div>
-                        <div class="p-4 text-black">
-                            <h4 class="text-2xl font-black uppercase">Jafar Abass</h4>
-                            <p class="text-[10px] font-black text-[#A855F7] uppercase tracking-widest">Graphic Design
-                            </p>
-                        </div>
-                    </div>
+            </div>
+        </section>
+
+        </section>
+
+        <!-- Marquee Partners (Refined Spacing) -->
+        <div class="border-y-2 border-spark-black my-12 py-10 bg-white overflow-hidden reveal">
+            <div class="flex animate-marquee whitespace-nowrap">
+                <div class="flex gap-16 items-center px-8">
+                    <span class="text-2xl font-black uppercase grayscale">Paystack</span>
+                    <span class="text-2xl font-serif italic font-bold">Flutterwave</span>
+                    <span class="text-2xl font-head font-bold tracking-widest">VARSIGRAM</span>
+                    <span class="text-2xl font-bold underline decoration-4">GravityLabNg</span>
+                    <span class="text-2xl font-bold italic">Dervac Hub</span>
+                    <span class="text-2xl font-mono font-bold">MONIEPOINT</span>
+
                 </div>
-                <div class="group relative sm:col-span-2 lg:col-span-1">
-                    <div
-                        class="bg-white brutalist-border p-2 brutalist-shadow transition-transform group-hover:scale-105">
-                        <div
-                            class="h-64 bg-slate-300 border-2 border-black mb-4 flex items-center justify-center overflow-hidden">
-                            <span
-                                class="text-8xl grayscale group-hover:grayscale-0 group-hover:scale-150 transition-all duration-300">📱</span>
-                        </div>
-                        <div class="p-4 text-black">
-                            <h4 class="text-2xl font-black uppercase">Muhsin Raheem</h4>
-                            <p class="text-[10px] font-black text-black uppercase tracking-widest">Product Design</p>
-                        </div>
-                    </div>
-                    <!-- Varsigram Small Sticker (Responsive) -->
-                    <!-- <div
-                        class="absolute bottom-0 left-0 md:-bottom-2 md:-left-2 bg-[#7F0019] text-white brutalist-border px-3 py-1 text-[8px] font-black uppercase -rotate-12 z-10">
-                        VRSGRM_APPROVED
-                    </div> -->
+                <!-- Duplicate for loop -->
+                <div class="flex gap-16 items-center px-8">
+                    <span class="text-2xl font-black uppercase grayscale">Paystack</span>
+                    <span class="text-2xl font-serif italic font-bold">Flutterwave</span>
+                    <span class="text-2xl font-head font-bold tracking-widest">VARSIGRAM</span>
+                    <span class="text-2xl font-bold underline decoration-4">GravityLabNg</span>
+                    <span class="text-2xl font-bold italic">Dervac Hub</span>
+                    <span class="text-2xl font-mono font-bold">MONIEPOINT</span>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="testimonials" class="reveal py-24 bg-[#FF8A00] border-y-[3px] border-black px-6 overflow-hidden">
-        <div class="max-w-7xl mx-auto">
-            <h3 class="text-3xl md:text-6xl font-black tracking-tighter mb-16 uppercase italic text-white"
-                style="text-shadow: 4px 4px 0px #000;">Direct_Transmissions</h3>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-white brutalist-border p-8 brutalist-shadow transition-all hover:-translate-y-2">
-                    <p class="text-xl font-bold italic mb-6">"SparkCode didn't just teach me code; they taught me how to
-                        survive and thrive in Lagos tech. I went from zero to Junior Frontend in 4 months."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-black text-white flex items-center justify-center font-black">AS</div>
+        <!-- Services Section -->
+        <section id="services" class="max-w-7xl mx-auto px-6 section-padding">
+            <div class="flex flex-col lg:flex-row gap-8 items-start lg:items-center mb-16 reveal">
+                <h2 class="bg-spark-orange label-pill text-4xl py-2 px-6">Services</h2>
+                <p class="max-w-xl font-medium text-lg leading-relaxed">
+                    We offer a intensive services to help individuals and businesses grow online through elite-level
+                    product training and strategy.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Service 1 -->
+                <div
+                    class="group bg-spark-silver border-2 border-spark-black rounded-[40px] p-10 shadow-brut hover:-translate-x-1 hover:-translate-y-1 transition-all reveal">
+                    <div class="flex flex-col justify-between h-full min-h-[250px]">
                         <div>
-                            <p class="font-black uppercase text-sm">Adebayo Samuel</p>
-                            <p class="text-[10px] font-bold text-[#A855F7] uppercase tracking-widest">Frontend @
-                                Paystack</p>
+                            <span class="bg-spark-purple label-pill mb-2">Frontend</span><br>
+                            <span class="bg-spark-purple label-pill">Development</span>
+                        </div>
+                        <div class="flex items-center gap-4 group-hover:gap-6 transition-all">
+                            <div
+                                class="w-12 h-12 bg-spark-black text-white rounded-full flex items-center justify-center font-bold text-2xl group-hover:rotate-45 transition-transform">
+                                ↗</div>
+                            <span class="font-bold text-xl">Learn more</span>
                         </div>
                     </div>
                 </div>
+
+                <!-- Service 2 -->
                 <div
-                    class="bg-black text-white brutalist-border p-8 shadow-[8px_8px_0px_0px_#A855F7] transition-all hover:-translate-y-2">
-                    <p class="text-xl font-bold italic mb-6">"The pressure is real, but the results are undeniable. The
-                        product design track gave me the portfolio I needed to land my dream job."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-white text-black flex items-center justify-center font-black">CO</div>
+                    class="group bg-spark-black text-white border-2 border-spark-black rounded-[40px] p-10 shadow-brut hover:-translate-x-1 hover:-translate-y-1 transition-all reveal">
+                    <div class="flex flex-col justify-between h-full min-h-[250px]">
                         <div>
-                            <p class="font-black uppercase text-sm">Chinwe Obi</p>
-                            <p class="text-[10px] font-bold text-[#FF8A00] uppercase tracking-widest">UI/UX Designer @
-                                Brass</p>
+                            <span class="bg-white text-spark-black label-pill mb-2">Graphic</span><br>
+                            <span class="bg-white text-spark-black label-pill">Design</span>
+                        </div>
+                        <div class="flex items-center gap-4 group-hover:gap-6 transition-all">
+                            <div
+                                class="w-12 h-12 bg-white text-spark-black rounded-full flex items-center justify-center font-bold text-2xl group-hover:rotate-45 transition-transform">
+                                ↗</div>
+                            <span class="font-bold text-xl">Learn more</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div
+                    class="group bg-spark-orange border-2 border-spark-black rounded-[40px] p-10 shadow-brut hover:-translate-x-1 hover:-translate-y-1 transition-all reveal">
+                    <div class="flex flex-col justify-between h-full min-h-[250px]">
+                        <div>
+                            <span class="bg-white label-pill mb-2">Product</span><br>
+                            <span class="bg-white label-pill">Design</span>
+                        </div>
+                        <div class="flex items-center gap-4 group-hover:gap-6 transition-all">
+                            <div
+                                class="w-12 h-12 bg-white text-spark-black rounded-full flex items-center justify-center font-bold text-2xl group-hover:rotate-45 transition-transform">
+                                ↗</div>
+                            <span class="font-bold text-xl">Learn more</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div
+                    class="group bg-spark-purple border-2 border-spark-black rounded-[40px] p-10 shadow-brut hover:-translate-x-1 hover:-translate-y-1 transition-all reveal">
+                    <div class="flex flex-col justify-between h-full min-h-[250px]">
+                        <div>
+                            <span class="bg-white label-pill mb-2">UI/UX</span><br>
+                            <span class="bg-white label-pill">Strategy</span>
+                        </div>
+                        <div class="flex items-center gap-4 group-hover:gap-6 transition-all">
+                            <div
+                                class="w-12 h-12 bg-spark-black text-white rounded-full flex items-center justify-center font-bold text-2xl group-hover:rotate-45 transition-transform">
+                                ↗</div>
+                            <span class="font-bold text-xl">Learn more</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="courses" class="reveal py-24 px-6 bg-[#fdfcf9]">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
-                <h3
-                    class="text-4xl md:text-6xl font-black tracking-tighter uppercase italic underline decoration-[10px] decoration-black">
-                    Learning_Paths</h3>
-                <p
-                    class="font-black text-xs uppercase bg-[#FF8A00] p-2 brutalist-border animate__animated animate__flash animate__infinite animate__slow">
-                    Current Batch: 2026</p>
+        <!-- CTA Section -->
+        <section class="max-w-7xl mx-auto px-6 pb-24 reveal">
+            <div
+                class="bg-spark-silver border-2 border-spark-black rounded-[40px] p-12 flex flex-col md:flex-row justify-between items-center gap-8 shadow-brut">
+                <div class="max-w-2xl text-center md:text-left">
+                    <h2 class="text-3xl font-bold mb-4 font-head uppercase tracking-tight">Let's make things happen</h2>
+                    <p class="text-lg font-medium text-gray-600 mb-8">Contact us today to learn more about how our
+                        digital academy can help your career grow and succeed online.</p>
+                    <a href="#contact" class="btn-brut bg-spark-black text-white">Get your free proposal</a>
+                </div>
+                <!-- Character Decor -->
+                <div class="relative w-48 h-48 flex-shrink-0">
+                    <div
+                        class="absolute inset-0 bg-spark-orange rounded-full border-2 border-spark-black flex items-center justify-center animate-spin-slow">
+                        <svg class="w-32 h-32 text-white" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                    </div>
+                </div>
             </div>
-            <div class="space-y-6">
+        </section>
+
+        <!-- Case Studies -->
+        <section class="bg-spark-black py-24 reveal">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col lg:flex-row gap-8 items-start lg:items-center mb-16">
+                    <h2 class="bg-spark-purple text-white label-pill text-4xl py-2 px-6">Case Studies</h2>
+                    <p class="max-w-xl font-medium text-lg leading-relaxed text-white opacity-80">
+                        Explore real Life Examples of our proven digital success through our community case studies.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-0 divide-y-2 md:divide-y-0 md:divide-x-2 divide-gray-700">
+                    <div class="p-8 group first:pl-0">
+                        <p class="text-white mb-8 text-lg opacity-90 group-hover:opacity-100 transition-opacity">For a
+                            local startup, we built a React-powered marketplace that scaled to 50k users in 3 months.
+                        </p>
+                        <a href="#" class="text-spark-orange font-bold text-xl hover:underline">Learn more ↗</a>
+                    </div>
+                    <div class="p-8 group">
+                        <p class="text-white mb-8 text-lg opacity-90 group-hover:opacity-100 transition-opacity">We
+                            rebranded a Fintech leader in Lagos, resulting in a 40% increase in brand recognition.</p>
+                        <a href="#" class="text-spark-orange font-bold text-xl hover:underline">Learn more ↗</a>
+                    </div>
+                    <div class="p-8 group last:pr-0">
+                        <p class="text-white mb-8 text-lg opacity-90 group-hover:opacity-100 transition-opacity">
+                            Transformed a logistics brand's UI/UX, reducing user churn by over 60%.</p>
+                        <a href="#" class="text-spark-orange font-bold text-xl hover:underline">Learn more ↗</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section id="courses" class="max-w-7xl mx-auto px-6 section-padding">
+            <div class="flex flex-col lg:flex-row gap-8 items-start lg:items-center mb-16 reveal">
+                <h2 class="bg-spark-orange label-pill text-4xl py-2 px-6">Courses</h2>
+                <p class="max-w-xl font-medium text-lg leading-relaxed">
+                    Our intensive technical and creative tracks are designed to turn beginners into elite-level forge
+                    masters. Secure your spot in the next cohort.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Course 1 -->
                 <div
-                    class="bg-white brutalist-border p-6 md:p-10 brutalist-shadow flex flex-col md:flex-row justify-between items-center group hover:bg-[#A855F7]/10 transition-all duration-500">
-                    <div class="text-center md:text-left mb-6 md:mb-0">
-                        <h4
-                            class="text-3xl font-black uppercase tracking-tighter group-hover:translate-x-4 transition-transform">
-                            Frontend Development</h4>
-                        <p class="font-bold text-slate-500 italic">React + Tailwind + API Integration</p>
+                    class="bg-white border-2 border-spark-black rounded-[32px] overflow-hidden shadow-brut flex flex-col reveal transition-transform hover:scale-[1.01]">
+                    <div class="bg-spark-orange p-6 border-b-2 border-spark-black">
+                        <h3 class="font-head text-3xl font-black uppercase text-spark-black leading-tight">
+                            Frontend<br>Mastery</h3>
                     </div>
-                    <div class="flex flex-col items-center md:items-end gap-2">
-                        <span class="text-3xl font-black text-[#FF8A00]">$10.00</span>
-                        <a href="#contact"
-                            class="neo-btn bg-black text-white px-8 py-4 font-black uppercase text-sm">Enroll</a>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <p class="font-medium text-gray-600 mb-8">Master React, Next.js, and modern UI architectures.
+                            Build standard industrial-grade software.</p>
+                        <div class="mt-auto flex items-center justify-between">
+                            <span class="text-4xl font-black font-head">$10</span>
+                            <a href="#contact" class="btn-brut bg-spark-black text-white text-sm py-2 px-6">Enroll
+                                Now</a>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Course 2 -->
                 <div
-                    class="bg-white brutalist-border p-6 md:p-10 brutalist-shadow flex flex-col md:flex-row justify-between items-center group hover:bg-[#FF8A00]/10 transition-all duration-500">
-                    <div class="text-center md:text-left mb-6 md:mb-0">
-                        <h4
-                            class="text-3xl font-black uppercase tracking-tighter group-hover:translate-x-4 transition-transform">
-                            Graphic Design</h4>
-                        <p class="font-bold text-slate-500 italic">Visual Communications + Branding</p>
+                    class="bg-white border-2 border-spark-black rounded-[32px] overflow-hidden shadow-brut flex flex-col reveal transition-transform hover:scale-[1.01]">
+                    <div class="bg-spark-purple p-6 border-b-2 border-spark-black">
+                        <h3 class="font-head text-3xl font-black uppercase text-white leading-tight">Graphic<br>Logic
+                        </h3>
                     </div>
-                    <div class="flex flex-col items-center md:items-end gap-2">
-                        <span class="text-3xl font-black text-[#FF8A00]">$10.00</span>
-                        <a href="#contact"
-                            class="neo-btn bg-black text-white px-8 py-4 font-black uppercase text-sm">Enroll</a>
+                    <div class="p-8 flex-1 flex flex-col text-spark-black">
+                        <p class="font-medium text-gray-600 mb-8">Master visual communication, brand identity systems,
+                            and high-impact design psychology.</p>
+                        <div class="mt-auto flex items-center justify-between">
+                            <span class="text-4xl font-black font-head">$10</span>
+                            <a href="#contact" class="btn-brut bg-spark-black text-white text-sm py-2 px-6">Enroll
+                                Now</a>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Course 3 -->
                 <div
-                    class="bg-white brutalist-border p-6 md:p-10 brutalist-shadow flex flex-col md:flex-row justify-between items-center group hover:bg-[#A855F7]/10 transition-all duration-500">
-                    <div class="text-center md:text-left mb-6 md:mb-0">
-                        <h4
-                            class="text-3xl font-black uppercase tracking-tighter group-hover:translate-x-4 transition-transform">
-                            Product Design</h4>
-                        <p class="font-bold text-slate-500 italic">UX Research + Advanced UI Systems</p>
+                    class="bg-white border-2 border-spark-black rounded-[32px] overflow-hidden shadow-brut flex flex-col reveal transition-transform hover:scale-[1.01]">
+                    <div class="bg-spark-silver p-6 border-b-2 border-spark-black">
+                        <h3 class="font-head text-3xl font-black uppercase text-spark-black leading-tight">
+                            Product<br>Forge</h3>
                     </div>
-                    <div class="flex flex-col items-center md:items-end gap-2">
-                        <span class="text-3xl font-black text-[#FF8A00]">$10.00</span>
-                        <a href="#contact"
-                            class="neo-btn bg-black text-white px-8 py-4 font-black uppercase text-sm">Enroll</a>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <p class="font-medium text-gray-600 mb-8">Solve user problems through research, Figma
+                            prototyping, and rapid industrial iteration.</p>
+                        <div class="mt-auto flex items-center justify-between">
+                            <span class="text-4xl font-black font-head">$10</span>
+                            <a href="#contact" class="btn-brut bg-spark-black text-white text-sm py-2 px-6">Enroll
+                                Now</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- Strategic Alliance Callouts -->
-            <div class="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
-                <!-- <span
-                    class="inline-block bg-[#7F0019] text-white brutalist-border px-4 py-2 text-[10px] font-black uppercase tracking-widest animate__animated animate__pulse animate__infinite">
-                    Powered_By_Varsigram_Network
-                </span> -->
-                <span
-                    class="inline-block bg-blue-700 text-white brutalist-border px-4 py-2 text-[10px] font-black uppercase tracking-widest">
-                    Internship_Fast_Track_@_GravityLabNg
-                </span>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="faq" class="reveal py-24 px-6 border-y-[3px] border-black bg-white">
-        <div class="max-w-4xl mx-auto">
-            <h3
-                class="text-2xl md:text-5xl font-black tracking-tighter mb-16 uppercase italic text-center underline decoration-[8px] decoration-[#A855F7]">
-                The_Forge_Intelligence</h3>
-            <div class="space-y-4">
-                <details
-                    class="group bg-white brutalist-border p-6 hover:bg-[#FF8A00] transition-colors cursor-pointer">
-                    <summary class="flex justify-between items-center font-black uppercase text-sm list-none">
-                        <span>Do I need a laptop?</span>
-                        <span class="group-open:rotate-180 transition-transform">▼</span>
-                    </summary>
-                    <p class="mt-4 font-bold text-xs leading-relaxed uppercase">Absolutely. Minimum 8GB RAM and an SSD.
-                        We build high-voltage software; you need the hardware to handle the current.</p>
-                </details>
-                <details
-                    class="group bg-white brutalist-border p-6 hover:bg-[#A855F7] transition-colors cursor-pointer">
-                    <summary
-                        class="flex justify-between items-center font-black uppercase text-sm list-none group-hover:text-white">
-                        <span class="group-hover:text-white">Is it fully remote?</span>
-                        <span class="group-open:rotate-180 transition-transform group-hover:text-white">▼</span>
-                    </summary>
-                    <p class="mt-4 font-bold text-xs leading-relaxed uppercase group-hover:text-white">We are a
-                        remote-first lab, but we hold intensive physical "Forge Days" in Yaba, Lagos for deep
-                        collaboration.</p>
-                </details>
-                <details class="group bg-white brutalist-border p-6 hover:bg-black transition-colors cursor-pointer">
-                    <summary
-                        class="flex justify-between items-center font-black uppercase text-sm list-none group-hover:text-white">
-                        <span class="group-hover:text-white">What is the cost?</span>
-                        <span class="group-open:rotate-180 transition-transform group-hover:text-white">▼</span>
-                    </summary>
-                    <p class="mt-4 font-bold text-xs leading-relaxed uppercase group-hover:text-white">ALL TRACKS FOR
-                        THE 2026 BATCH ARE CURRENTLY PRICED AT A FLAT RATE OF $10.00. FORGE YOUR FUTURE AT AN ACCESSIBLE
-                        PRICE POINT.</p>
-                </details>
-                <details
-                    class="group bg-white brutalist-border p-6 hover:bg-[#FF8A00] transition-colors cursor-pointer">
-                    <summary class="flex justify-between items-center font-black uppercase text-sm list-none">
-                        <span>What if I have zero experience?</span>
-                        <span class="group-open:rotate-180 transition-transform">▼</span>
-                    </summary>
-                    <p class="mt-4 font-bold text-xs leading-relaxed uppercase">We prefer raw potential over bad habits.
-                        If you have the hunger and the logic, we will forge the skill.</p>
-                </details>
+        <!-- Team Section -->
+        <section id="team" class="max-w-7xl mx-auto px-6 section-padding">
+            <div class="flex flex-col lg:flex-row gap-8 items-start lg:items-center mb-16 reveal">
+                <h2 class="bg-spark-orange label-pill text-4xl py-2 px-6">Team</h2>
+                <p class="max-w-xl font-medium text-lg leading-relaxed">
+                    The forge masters dedicated to your technical and creative growth.
+                </p>
             </div>
-        </div>
-    </section>
-
-    <section id="contact" class="reveal py-24 bg-[#FF8A00] border-t-[3px] border-black px-6">
-        <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-            <div class="animate__animated animate__shakeY animate__infinite animate__slow">
-                <h3 class="text-6xl md:text-8xl font-black tracking-tighter text-white uppercase italic"
-                    style="text-shadow: 4px 4px 0px #000;">Ready <br />To <br />Build?</h3>
-                <p class="font-black uppercase tracking-[0.2em] mt-8 text-black">Remote, Lagos. Nigeria.</p>
-            </div>
-            <form id="applyForm" action="https://formsubmit.co/sparkcodeacad@gmail.com" method="POST"
-                class="bg-white brutalist-border p-8 brutalist-shadow space-y-6 hover:shadow-[12px_12px_0px_0px_#000] transition-shadow">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <input required id="userName" name="Fullname:" placeholder="NAME"
-                        class="w-full bg-slate-50 brutalist-border p-4 font-black uppercase text-xs focus:outline-none focus:ring-4 focus:ring-[#A855F7] transition-all" />
-                    <input required name="Email" type="email" placeholder="EMAIL"
-                        class="w-full bg-slate-50 brutalist-border p-4 font-black uppercase text-xs focus:outline-none focus:ring-4 focus:ring-[#A855F7] transition-all" />
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Zayd -->
+                <div
+                    class="bg-spark-silver border-2 border-spark-black p-8 rounded-[32px] shadow-brut transition-transform hover:scale-[1.02] reveal">
+                    <div class="flex items-center gap-6 mb-6 pb-6 border-b-2 border-spark-black">
+                        <img src="./Images/Zayd.png" alt="Zayd"
+                            class="w-20 h-20 rounded-xl border-2 border-spark-black object-cover shadow-brut-sm">
+                        <div>
+                            <h4 class="text-xl font-black">Zayd Tahir</h4>
+                            <p class="text-sm font-bold uppercase tracking-widest text-gray-500">Frontend Lead</p>
+                        </div>
+                    </div>
+                    <p class="mb-6 font-medium">Specializing in high-performance frontend architectures and modern UI
+                        logic.</p>
+                    <div
+                        class="w-10 h-10 bg-spark-black rounded-full flex items-center justify-center text-white font-black hover:rotate-12 transition-transform cursor-pointer">
+                        in</div>
                 </div>
-                <select required name="Corse"
-                    class="w-full bg-slate-50 brutalist-border p-4 font-black uppercase text-xs focus:outline-none">
-                    <option value="">Select Track</option>
-                    <option>Frontend Development</option>
-                    <option>Graphic Design</option>
-                    <option>Product Design</option>
-                </select>
-                <textarea required name="Message" placeholder="MISSION STATEMENT / WHY YOU?" rows="4"
-                    class="w-full bg-slate-50 brutalist-border p-4 font-black uppercase text-xs focus:outline-none focus:ring-4 focus:ring-[#A855F7] transition-all resize-none"></textarea>
-                <button type="submit"
-                    class="neo-btn w-full py-5 bg-black text-white font-black uppercase tracking-widest text-sm shadow-[6px_6px_0px_0px_#A855F7]">
-                    Enroll Now</button>
-            </form>
-        </div>
-    </section>
-
-    <footer class="py-12 bg-white border-t-[3px] border-black px-6">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="font-black uppercase text-xl animate__animated animate__headShake animate__infinite">Spark<span
-                    class="text-[#A855F7]">Code</span></div>
-            <div class="flex gap-10 text-[10px] font-black uppercase tracking-widest">
-                <a href="https://github.com/SparkCode-acad" class="hover:text-[#FF8A00] transition-colors">GitHub</a>
-                <a href="" class="hover:text-[#A855F7] transition-colors">Instagram</a>
-                <a href="#" class="hover:text-black italic">©2026</a>
+                <!-- Jafar -->
+                <div
+                    class="bg-spark-silver border-2 border-spark-black p-8 rounded-[32px] shadow-brut transition-transform hover:scale-[1.02] reveal">
+                    <div class="flex items-center gap-6 mb-6 pb-6 border-b-2 border-spark-black">
+                        <img src="./Images/Jafar.jpeg" alt="Jafar"
+                            class="w-20 h-20 rounded-xl border-2 border-spark-black object-cover shadow-brut-sm">
+                        <div>
+                            <h4 class="text-xl font-black">Jafar Abass</h4>
+                            <p class="text-sm font-bold uppercase tracking-widest text-gray-500">Graphic Design</p>
+                        </div>
+                    </div>
+                    <p class="mb-6 font-medium">Mastering visual communication and professional brand identity systems.
+                    </p>
+                    <div
+                        class="w-10 h-10 bg-spark-black rounded-full flex items-center justify-center text-white font-black hover:rotate-12 transition-transform cursor-pointer">
+                        in</div>
+                </div>
+                <!-- Muhsin -->
+                <div
+                    class="bg-spark-silver border-2 border-spark-black p-8 rounded-[32px] shadow-brut transition-transform hover:scale-[1.02] reveal">
+                    <div class="flex items-center gap-6 mb-6 pb-6 border-b-2 border-spark-black">
+                        <img src="./Images/Muhsin.png" alt="Muhsin"
+                            class="w-20 h-20 rounded-xl border-2 border-spark-black object-cover shadow-brut-sm">
+                        <div>
+                            <h4 class="text-xl font-black">Muhsin Raheem</h4>
+                            <p class="text-sm font-bold uppercase tracking-widest text-gray-500">Product Design</p>
+                        </div>
+                    </div>
+                    <p class="mb-6 font-medium">Solving user problems through research and rapid Figma prototyping.</p>
+                    <div
+                        class="w-10 h-10 bg-spark-black rounded-full flex items-center justify-center text-white font-black hover:rotate-12 transition-transform cursor-pointer">
+                        in</div>
+                </div>
             </div>
-            <div class="text-[10px] font-black uppercase tracking-widest opacity-40">Lagos, Nigeria</div>
-        </div>
-        <div class="max-w-7xl mx-auto mt-8 pt-8 border-t-[3px] border-black text-center">
-            <p class="text-[10px] font-black uppercase tracking-[0.5em] text-[#7F0019]">SparkCode Academy x Varsigram ©
-                2026 Collaboration</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="max-w-7xl mx-auto px-6 section-padding reveal">
+            <div class="flex flex-col lg:flex-row gap-8 items-start lg:items-center mb-16">
+                <h2 class="bg-spark-orange label-pill text-4xl py-2 px-6">Apply Now</h2>
+                <p class="max-w-md font-medium text-lg leading-relaxed">Ready to forge your future? Connect with us and
+                    join the next cohort.</p>
+            </div>
+
+            <div
+                class="bg-white border-2 border-spark-black rounded-[40px] shadow-brut flex flex-col lg:flex-row overflow-hidden">
+                <form class="flex-1 p-5 md:p-12 grid grid-cols-1 sm:grid-cols-2 gap-6 bg-[#fdfdfd]">
+                    <div class="space-y-2">
+                        <label class="font-black text-xs uppercase tracking-widest opacity-60">Full Name</label>
+                        <input type="text" placeholder="John Doe"
+                            class="w-full p-4 border-2 border-spark-black rounded-xl outline-none focus:shadow-brut-purple transition-all">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="font-black text-xs uppercase tracking-widest opacity-60">Email</label>
+                        <input type="email" placeholder="john@forge.com"
+                            class="w-full p-4 border-2 border-spark-black rounded-xl outline-none focus:shadow-brut-purple transition-all">
+                    </div>
+                    <div class="sm:col-span-2 space-y-2">
+                        <label class="font-black text-xs uppercase tracking-widest opacity-60">Choose Track</label>
+                        <select
+                            class="w-full p-4 border-2 border-spark-black rounded-xl outline-none bg-white focus:shadow-brut-purple transition-all">
+                            <option>Frontend Development</option>
+                            <option>Graphic Design</option>
+                            <option>Product Design</option>
+                        </select>
+                    </div>
+                    <div class="sm:col-span-2 space-y-2">
+                        <label class="font-black text-xs uppercase tracking-widest opacity-60">Motivation</label>
+                        <textarea rows="4" placeholder="Why should we accept you?"
+                            class="w-full p-4 border-2 border-spark-black rounded-xl outline-none resize-none focus:shadow-brut-purple transition-all"></textarea>
+                    </div>
+                    <button type="submit"
+                        class="sm:col-span-2 btn-brut bg-spark-orange text-black text-xl hover:translate-y-[-5px]">Transmit
+                        Application</button>
+                </form>
+
+                <div
+                    class="lg:w-[400px] bg-spark-purple p-5 md:p-12 text-white relative overflow-hidden flex flex-col justify-center">
+                    <div
+                        class="absolute top-[-20px] right-[-20px] w-40 h-40 border-4 border-white rounded-full opacity-10">
+                    </div>
+                    <h3 class="text-4xl font-black mb-8 leading-tight">The <br>Forge HQ</h3>
+                    <div class="space-y-4 font-medium">
+                        <p class="text-xl">SparkCode Academy</p>
+                        <p class="opacity-80">Lagos, Nigeria</p>
+                        <div class="pt-8">
+                            <a href="mailto:sparkcodeacad@gmail.com"
+                                class="bg-white text-spark-black px-6 py-4 border-2 border-spark-black rounded-lg font-black text-sm shadow-brut-sm block text-center hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">sparkcodeacad@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t-2 border-spark-black py-16">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="font-logo text-2xl font-black uppercase">SparkCode</div>
+            <p class="text-gray-500 font-medium">© 2026 SparkCode Academy</p>
+            <div class="flex gap-10 font-bold">
+                <a href="PrivacyPolicy.html" class="hover:underline">Privacy</a>
+                <a href="TermsOfService.html" class="hover:underline">Terms</a>
+            </div>
         </div>
     </footer>
 
-    <button id="scrollToTop"
-        class="fixed bottom-8 right-8 z-[60] bg-[#FF8A00] brutalist-border p-3 brutalist-shadow opacity-0 translate-y-10 transition-all duration-300 hover:-translate-y-2 hover:-translate-x-1 hover:shadow-[12px_12px_0px_0px_#000] invisible group">
-        <svg class="w-6 h-6 text-white transform group-hover:-translate-y-1 transition-transform" fill="none"
-            stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 15l7-7 7 7"></path>
-        </svg>
-    </button>
-
     <script>
-        // Scroll Reveal Logic
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
+        // Reveal Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
                 }
-            }
+            });
+        }, { threshold: 0.1 });
 
-            // Scroll to Top visibility
-            const scrollBtn = document.getElementById('scrollToTop');
-            if (window.scrollY > 500) {
-                scrollBtn.classList.remove('opacity-0', 'translate-y-10', 'invisible');
-                scrollBtn.classList.add('opacity-100', 'translate-y-0', 'visible');
-            } else {
-                scrollBtn.classList.add('opacity-0', 'translate-y-10', 'invisible');
-                scrollBtn.classList.remove('opacity-100', 'translate-y-0', 'visible');
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal(); // Run once on load
-
-        // Scroll to Top click
-        document.getElementById('scrollToTop').addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // Functional form handling
-        document.getElementById('applyForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const nameInput = document.getElementById('userName');
-            const name = nameInput ? nameInput.value : "Applicant";
-            const btn = e.target.querySelector('button');
-            btn.disabled = true;
-            const originalText = btn.innerText;
-            btn.innerText = "TRANSMITTING...";
-
-            setTimeout(() => {
-                alert(`Application Received, ${name}! We've sent a transmission to your email.`);
-                e.target.reset();
-                btn.disabled = false;
-                btn.innerText = originalText;
-            }, 1500);
-        });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
-
 </body>
 
 </html>
