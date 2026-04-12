@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Mastery | SparkCode Academy</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Space+Grotesk:wght@700&family=Outfit:wght@900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        spark: {
+                            orange: '#FF8A00',
+                            purple: '#A855F7',
+                            black: '#191A23',
+                            silver: '#F3F3F3',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        head: ['Space Grotesk', 'sans-serif'],
+                        logo: ['Outfit', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'brut': '8px 8px 0px 0px #191A23',
+                        'brut-sm': '4px 4px 0px 0px #191A23',
+                        'brut-purple': '6px 6px 0px 0px #A855F7',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer components {
+            .btn-brut {
+                @apply inline-block px-8 py-4 border-4 border-spark-black font-black uppercase tracking-widest transition-all duration-200 shadow-brut hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[10px_10px_0px_0px_#191A23] active:translate-x-0 active:translate-y-0 active:shadow-none;
+            }
+            .label-pill {
+                @apply inline-block px-4 py-1 border-2 border-spark-black rounded-lg font-black uppercase tracking-tighter text-sm mb-4 transform -rotate-2;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-spark-silver text-spark-black font-sans selection:bg-spark-orange selection:text-white min-h-screen">
+
+    <!-- Header / Nav -->
+    <header class="p-6 md:p-10">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-spark-orange border-2 border-spark-black rounded-lg flex items-center justify-center shadow-brut-sm">
+                    <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <a href="index.html" class="font-logo text-2xl uppercase font-black tracking-tighter">SparkCode</a>
+            </div>
+            <a href="index.html#services" class="btn-brut bg-white text-sm py-2 px-6 shadow-brut-sm w-full sm:w-auto text-center">Back to Forge</a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-12 md:py-24">
+        <!-- Service Hero -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-24">
+            <div class="text-center lg:text-left">
+                <span class="bg-spark-purple text-white label-pill bg-spark-purple">Industrial Track</span>
+                <h1 class="font-head text-4xl md:text-5xl lg:text-7xl font-black uppercase leading-[0.9] tracking-tighter mb-8 italic">
+                    Frontend<br><span class="text-spark-orange underline decoration-[8px]">Mastery</span>
+                </h1>
+                <p class="text-lg md:text-xl lg:text-2xl font-medium leading-relaxed mb-10 text-gray-700 mx-auto lg:mx-0 max-w-2xl">
+                    Master the art of building industrial-grade user interfaces. We don't just teach code; we teach **software architecture**.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="index.html#contact" class="btn-brut bg-spark-orange text-white w-full sm:w-auto text-center">Secure a Seat</a>
+                </div>
+            </div>
+            <div class="relative order-first lg:order-last">
+                <div class="bg-white border-4 md:border-8 border-spark-black p-6 md:p-10 rounded-[32px] md:rounded-[40px] shadow-brut rotate-2 hover:rotate-0 transition-transform duration-500">
+                    <div class="flex gap-4 mb-6">
+                        <div class="w-3 h-3 md:w-4 h-4 rounded-full bg-red-400 border-2 border-spark-black"></div>
+                        <div class="w-3 h-3 md:w-4 h-4 rounded-full bg-yellow-400 border-2 border-spark-black"></div>
+                        <div class="w-3 h-3 md:w-4 h-4 rounded-full bg-green-400 border-2 border-spark-black"></div>
+                    </div>
+                    <pre class="font-mono text-[10px] sm:text-xs md:text-base text-spark-black overflow-x-hidden whitespace-pre-wrap sm:whitespace-pre">
+<span class="text-spark-orange">const</span> <span class="text-spark-purple">ForgeApp</span> = () => {
+  <span class="text-gray-400">// Scaling for mobile</span>
+  <span class="text-spark-orange">return</span> (
+    &lt;<span class="text-spark-purple">IndustrialLayout</span>&gt;
+      &lt;<span class="text-spark-purple">NextEngine</span> /&gt;
+      &lt;<span class="text-spark-purple">TailwindForge</span> /&gt;
+    &lt;/<span class="text-spark-purple">IndustrialLayout</span>&gt;
+  )
+}
+                    </pre>
+                </div>
+                <!-- Abstract Accent -->
+                <div class="absolute -top-6 -right-6 w-20 h-20 md:w-32 md:h-32 bg-spark-purple rounded-full border-4 border-spark-black shadow-brut -z-10 animate-pulse"></div>
+            </div>
+        </div>
+
+        <!-- Details Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+            <div class="bg-white border-4 border-spark-black p-8 rounded-3xl shadow-brut">
+                <h3 class="text-2xl font-black mb-4 uppercase italic">01. Architecture</h3>
+                <p class="font-medium text-gray-600">Master React, Next.js, and complex state management using industrial patterns used at Big Tech.</p>
+            </div>
+            <div class="bg-white border-4 border-spark-black p-8 rounded-3xl shadow-brut">
+                <h3 class="text-2xl font-black mb-4 uppercase italic">02. Velocity</h3>
+                <p class="font-medium text-gray-600">Learn to build at scale with Tailwind CSS, Framer Motion, and high-performance asset pipelines.</p>
+            </div>
+            <div class="bg-white border-4 border-spark-black p-8 rounded-3xl shadow-brut md:col-span-2 lg:col-span-1">
+                <h3 class="text-2xl font-black mb-4 uppercase italic">03. Logic</h3>
+                <p class="font-medium text-gray-600">Dive deep into Design Systems, component-driven development, and high-octane user experiences.</p>
+            </div>
+        </div>
+
+        <!-- Process Section -->
+        <div class="bg-spark-black text-white p-8 md:p-20 rounded-[32px] md:rounded-[60px] border-4 border-spark-black shadow-brut mb-24 relative overflow-hidden">
+            <h2 class="font-head text-3xl md:text-6xl font-black uppercase mb-12 text-center leading-tight">The Forge <br class="md:hidden"> <span class="text-spark-orange italic">Process</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 relative z-10">
+                <div class="space-y-8">
+                    <div class="flex gap-4 md:gap-6 items-start">
+                        <div class="bg-spark-orange text-spark-black w-10 h-10 md:w-12 md:h-12 flex-shrink-0 rounded-lg flex items-center justify-center font-black text-xl md:text-2xl border-2 border-white">1</div>
+                        <div>
+                            <h4 class="text-lg md:text-xl font-bold mb-2 uppercase tracking-wide">Foundation Phase</h4>
+                            <p class="text-sm md:text-base text-gray-400 leading-relaxed">Mastering HTML Semantic structure, CSS Layout patterns, and Modern JS Logic.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 md:gap-6 items-start">
+                        <div class="bg-spark-purple text-white w-10 h-10 md:w-12 md:h-12 flex-shrink-0 rounded-lg flex items-center justify-center font-black text-xl md:text-2xl border-2 border-white">2</div>
+                        <div>
+                            <h4 class="text-lg md:text-xl font-bold mb-2 uppercase tracking-wide">The React Forge</h4>
+                            <p class="text-sm md:text-base text-gray-400 leading-relaxed">Full immersion into the React ecosystem, from basic hooks to enterprise Next.js patterns.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-8">
+                    <div class="flex gap-4 md:gap-6 items-start">
+                        <div class="bg-white text-spark-black w-10 h-10 md:w-12 md:h-12 flex-shrink-0 rounded-lg flex items-center justify-center font-black text-xl md:text-2xl border-2 border-spark-black">3</div>
+                        <div>
+                            <h4 class="text-lg md:text-xl font-bold mb-2 uppercase tracking-wide">Industrial Sprint</h4>
+                            <p class="text-sm md:text-base text-gray-400 leading-relaxed">Building 3 massive industrial-grade projects under high-pressure real-world deadlines.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Decorative Spark -->
+            <div class="absolute -bottom-20 -right-20 w-48 md:w-80 h-48 md:h-80 bg-spark-orange rounded-full opacity-10 border-[10px] md:border-[20px] border-white animate-spin-slow"></div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t-4 border-spark-black py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="font-logo text-3xl font-black uppercase mb-4">SparkCode</div>
+            <p class="text-gray-500 font-medium">Forging the future of Lagos tech, one master at a time.</p>
+            <div class="mt-8">
+                <a href="index.html" class="text-spark-orange font-black hover:underline px-4 italic uppercase tracking-widest">Home</a>
+                <a href="index.html#courses" class="text-spark-orange font-black hover:underline px-4 italic uppercase tracking-widest">Enroll</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

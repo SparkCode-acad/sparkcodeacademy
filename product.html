@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Design (UI/UX) | SparkCode Academy</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Space+Grotesk:wght@700&family=Outfit:wght@900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        spark: {
+                            orange: '#FF8A00',
+                            purple: '#A855F7',
+                            black: '#191A23',
+                            silver: '#F3F3F3',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        head: ['Space Grotesk', 'sans-serif'],
+                        logo: ['Outfit', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'brut': '8px 8px 0px 0px #191A23',
+                        'brut-sm': '4px 4px 0px 0px #191A23',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer components {
+            .btn-brut {
+                @apply inline-block px-8 py-4 border-4 border-spark-black font-black uppercase tracking-widest transition-all duration-200 shadow-brut hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[10px_10px_0px_0px_#191A23] active:translate-x-0 active:translate-y-0 active:shadow-none;
+            }
+            .label-pill {
+                @apply inline-block px-6 py-2 border-2 border-spark-black rounded-xl font-black uppercase tracking-widest text-sm mb-4 transform -skew-x-12;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-spark-silver text-spark-black font-sans selection:bg-spark-orange selection:text-white min-h-screen">
+
+    <!-- Header / Nav -->
+    <header class="p-6 md:p-10">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-spark-black border-2 border-spark-black rounded-lg flex items-center justify-center shadow-brut-sm">
+                    <svg class="w-6 h-6 text-spark-orange" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M11 2v20c-5.07 0-9.22-3.9-9.91-8.91C1.04 12.59 1 12.3 1 12c0-.3.04-.59.09-.89C1.78 5.9 5.93 2 11 2m2 0c5.07 0 9.22 3.9 9.91 8.91.05.3.09.59.09.89 0 .3-.04.59-.09.89C22.22 17.9 18.07 21.8 12.91 22V2h.09z" />
+                    </svg>
+                </div>
+                <a href="index.html" class="font-logo text-2xl uppercase font-black tracking-tighter">SparkCode</a>
+            </div>
+            <a href="index.html#services" class="btn-brut bg-white text-sm py-2 px-6 shadow-brut-sm w-full sm:w-auto text-center">Back to Forge</a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-12 md:py-24">
+        <!-- Service Hero -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-24">
+            <div class="text-center lg:text-left">
+                <span class="bg-spark-black text-white label-pill border-white">Product Track</span>
+                <h1 class="font-head text-4xl md:text-5xl lg:text-7xl font-black uppercase leading-[0.9] tracking-tighter mb-8 italic">
+                    Product Design<br><span class="text-spark-orange underline decoration-[8px]">(UI/UX)</span>
+                </h1>
+                <p class="text-lg md:text-xl lg:text-2xl font-medium leading-relaxed mb-10 text-gray-700 mx-auto lg:mx-0 max-w-2xl">
+                    Master the full cycle of product creation, from research and strategic UX to high-fidelity UI design.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="index.html#contact" class="btn-brut bg-spark-black text-white w-full sm:w-auto text-center">Forge your Career</a>
+                </div>
+            </div>
+            <div class="relative order-first lg:order-last">
+                <div class="bg-white border-4 md:border-8 border-spark-black p-4 md:p-6 rounded-[32px] md:rounded-[40px] shadow-brut rotate-3 hover:rotate-0 transition-transform duration-500 overflow-hidden">
+                    <div class="grid grid-cols-2 gap-2 md:gap-4">
+                        <div class="aspect-square bg-spark-silver border-2 md:border-4 border-spark-black rounded-xl md:rounded-2xl flex items-center justify-center font-black text-lg md:text-xl text-spark-black">U</div>
+                        <div class="aspect-square bg-spark-orange border-2 md:border-4 border-spark-black rounded-xl md:rounded-2xl flex items-center justify-center font-black text-lg md:text-xl text-white">X</div>
+                        <div class="aspect-square bg-spark-purple border-2 md:border-4 border-spark-black rounded-xl md:rounded-2xl flex items-center justify-center font-black text-lg md:text-xl text-white">R</div>
+                        <div class="aspect-square bg-white border-2 md:border-4 border-spark-black rounded-xl md:rounded-2xl flex items-center justify-center font-black text-lg md:text-xl text-spark-black">D</div>
+                    </div>
+                </div>
+                <!-- Abstract Accent -->
+                <div class="absolute -top-6 -right-6 md:-top-10 md:-right-10 w-16 h-16 md:w-24 md:h-24 bg-spark-orange rounded-2xl md:rounded-3xl border-2 md:border-4 border-spark-black shadow-brut -z-10 -rotate-12 animate-bounce"></div>
+            </div>
+        </div>
+
+        <!-- Details Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+            <div class="bg-white border-4 border-spark-black p-8 rounded-3xl shadow-brut group hover:bg-spark-orange transition-colors">
+                <h3 class="text-2xl font-black mb-4 uppercase italic group-hover:text-white">01. Research</h3>
+                <p class="font-medium text-gray-600 group-hover:text-white">Learn effective user interviewing, data-driven synthesis, and building industrial-grade personas.</p>
+            </div>
+            <div class="bg-white border-4 border-spark-black p-8 rounded-3xl shadow-brut group hover:bg-spark-purple transition-colors">
+                <h3 class="text-2xl font-black mb-4 uppercase italic group-hover:text-white">02. Prototyping</h3>
+                <p class="font-medium text-gray-600 group-hover:text-white">Master Figma from scratch, including advanced auto-layout, design systems, and high-fidelity flows.</p>
+            </div>
+            <div class="bg-white border-4 border-spark-black p-8 rounded-3xl shadow-brut group hover:bg-spark-black transition-colors md:col-span-2 lg:col-span-1">
+                <h3 class="text-2xl font-black mb-4 uppercase italic group-hover:text-white">03. Impact</h3>
+                <p class="font-medium text-gray-600 group-hover:text-white text-opacity-80 group-hover:text-opacity-100">Build 5 massive case studies that show you know how to solve real business user problems.</p>
+            </div>
+        </div>
+
+        <!-- Sprint Block -->
+        <div class="bg-spark-orange border-4 md:border-8 border-spark-black p-8 md:p-20 rounded-[32px] md:rounded-[60px] shadow-brut text-spark-black mb-24">
+             <h2 class="font-head text-3xl md:text-6xl font-black uppercase mb-8 leading-tight italic">The 10-Week <br>Product Sprint</h2>
+             <p class="text-lg md:text-2xl font-black mb-12 max-w-2xl opacity-80 uppercase tracking-tighter">High-pressure training for the elite 1% of designers in Lagos.</p>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                 <div class="border-t-4 border-spark-black pt-6">
+                     <span class="font-black text-3xl md:text-4xl italic">W01-W03</span>
+                     <p class="font-bold text-base md:text-lg mt-2 opacity-70 uppercase tracking-widest">Discovery & Empathy</p>
+                 </div>
+                 <div class="border-t-4 border-spark-black pt-6">
+                     <span class="font-black text-3xl md:text-4xl italic">W04-W10</span>
+                     <p class="font-bold text-base md:text-lg mt-2 opacity-70 uppercase tracking-widest">Master Execution</p>
+                 </div>
+             </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t-4 border-spark-black py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="font-logo text-3xl font-black uppercase mb-4">SparkCode</div>
+            <p class="text-gray-500 font-medium">© 2026 SparkCode Academy — Shaping African Digital Products.</p>
+            <div class="mt-8">
+                <a href="index.html" class="text-spark-orange font-black hover:underline px-4 italic uppercase tracking-widest">Home</a>
+                <a href="index.html#courses" class="text-spark-orange font-black hover:underline px-4 italic uppercase tracking-widest">Enroll</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

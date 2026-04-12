@@ -79,91 +79,230 @@
 <body class="bg-white text-spark-black font-sans selection:bg-spark-orange selection:text-white">
 
     <!-- Navbar -->
-    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b-2 border-spark-black px-3 md:px-6">
-        <div class="max-w-7xl mx-auto h-24 flex items-center justify-between">
+    <header id="navbar"
+        class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl bg-white/90 backdrop-blur-md border-4 border-spark-black shadow-brut rounded-2xl transition-all duration-300">
+        <div class="px-6 md:px-10 p-3 flex items-center justify-between">
             <!-- Logo -->
             <div class="flex items-center gap-3 flex-1">
                 <div
-                    class="w-10 h-10 bg-spark-orange border-2 border-spark-black rounded-lg flex items-center justify-center shadow-brut-sm hover:rotate-12 transition-transform cursor-pointer">
+                    class="w-10 h-10 bg-spark-orange border-2 border-spark-black rounded-lg flex items-center justify-center shadow-brut-sm hover:rotate-12 hover:scale-110 transition-transform cursor-pointer">
                     <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                 </div>
                 <a href="index.html"
-                    class="font-logo text-xl md:text-2xl uppercase font-black tracking-tighter">SparkCode</a>
+                    class="font-logo text-xl md:text-2xl uppercase font-black tracking-tighter hover:text-spark-orange transition-colors">SparkCode</a>
             </div>
 
             <!-- Links -->
-            <nav class="hidden md:flex items-center justify-center gap-8 flex-2 font-medium">
-                <a href="#about" class="hover:underline transition-all">About us</a>
-                <a href="#services" class="hover:underline transition-all">Services</a>
-                <a href="#team" class="hover:underline transition-all">Team</a>
-                <a href="#courses" class="hover:underline transition-all">Courses</a>
+            <nav class="hidden md:flex items-center justify-center gap-4 flex-2 font-head font-bold text-lg">
+                <a href="#about"
+                    class="px-5 py-2 rounded-xl hover:bg-spark-orange hover:text-white transition-all duration-200">About</a>
+                <a href="#services"
+                    class="px-5 py-2 rounded-xl hover:bg-spark-orange hover:text-white transition-all duration-200">Services</a>
+                <a href="#team"
+                    class="px-5 py-2 rounded-xl hover:bg-spark-orange hover:text-white transition-all duration-200">Team</a>
+                <a href="#courses"
+                    class="px-5 py-2 rounded-xl hover:bg-spark-orange hover:text-white transition-all duration-200">Courses</a>
             </nav>
 
-            <!-- CTA -->
-            <div class="flex-1 flex justify-end">
-                <a href="#contact" class="btn-brut bg-white text-base md:text-sm md:py-3 md:px-6">Apply Now</a>
+            <!-- CTA & Mobile Toggle -->
+            <div class="flex-1 flex justify-end items-center gap-4">
+                <a href="#contact"
+                    class="hidden md:flex btn-brut bg-spark-black text-white text-base md:text-sm md:py-3 md:px-8 border-4">Get
+                    Started</a>
+
+                <!-- Hamburger Button -->
+                <button id="mobile-menu-open"
+                    class="block md:hidden w-12 h-12 bg-spark-orange border-4 border-spark-black rounded-xl shadow-brut-sm hover:translate-y-[-2px] hover:translate-x-[-2px] hover:shadow-brut transition-all active:translate-y-0 active:translate-x-0 active:shadow-none">
+                    <svg class="w-7 h-7 mx-auto stroke-spark-black" fill="none" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                            d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
             </div>
         </div>
     </header>
 
-    <main class="relative overflow-hidden">
-        <!-- Dot Grid Vibe -->
-        <div
-            class="absolute inset-0 z-[-1] opacity-10 [background-image:radial-gradient('#191A23'_1px,transparent_1px)] [background-size:24px_24px]">
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] invisible pointer-events-none transition-all duration-300">
+        <!-- Backdrop -->
+        <div id="mobile-menu-backdrop"
+            class="absolute inset-0 bg-spark-black/40 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+
+        <!-- Drawer -->
+        <div id="mobile-menu-drawer"
+            class="absolute right-0 top-0 h-full w-[85%] bg-white border-l-8 border-spark-black shadow-[-10px_0_0_0_#191A23] translate-x-full rotate-6 skew-y-3 opacity-0 transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) p-8 flex flex-col">
+            <div class="flex justify-between items-center mb-12">
+                <div class="font-logo text-2xl font-black uppercase tracking-tighter">Menu</div>
+                <button id="mobile-menu-close"
+                    class="w-12 h-12 bg-spark-silver border-4 border-spark-black rounded-xl flex items-center justify-center hover:bg-red-400 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="flex flex-col gap-6 flex-1">
+                <a href="#about"
+                    class="mobile-nav-link text-4xl font-black uppercase hover:text-spark-orange transition-colors">About</a>
+                <a href="#services"
+                    class="mobile-nav-link text-4xl font-black uppercase hover:text-spark-orange transition-colors">Services</a>
+                <a href="#team"
+                    class="mobile-nav-link text-4xl font-black uppercase hover:text-spark-orange transition-colors">Team</a>
+                <a href="#courses"
+                    class="mobile-nav-link text-4xl font-black uppercase hover:text-spark-orange transition-colors">Courses</a>
+            </nav>
+
+            <div class="mt-auto">
+                <a href="#contact"
+                    class="mobile-nav-link block w-full bg-spark-orange text-white text-center py-6 text-2xl font-black border-4 border-spark-black shadow-brut rounded-2xl hover:-translate-y-1 transition-all">GET
+                    STARTED</a>
+            </div>
         </div>
+    </div>
+
+    <main class="relative overflow-hidden pt-20">
+        <!-- Forge Engine Background -->
+        <canvas id="forge-canvas" class="absolute inset-0 z-[-1] w-full h-full pointer-events-none"></canvas>
 
         <!-- Hero Section -->
-        <section class="max-w-7xl mx-auto px-6 section-padding grid lg:grid-cols-2 grid-cols-1 items-center gap-12">
-            <div class="reveal">
-                <h1 class="font-head text-5xl md:text-6xl lg:text-[5rem] font-bold leading-[1.05] tracking-tight mb-8">
+        <section
+            class="max-w-7xl mx-auto px-6 section-padding grid lg:grid-cols-2 grid-cols-1 items-center gap-16 lg:gap-12">
+            <div class="reveal text-center lg:text-left">
+                <h1 class="font-head text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-8">
                     Igniting the <span
-                        class="bg-spark-orange px-2 border-2 border-spark-black shadow-brut-sm">digital</span> landscape
+                        class="bg-spark-orange px-2 border-2 md:border-4 border-spark-black shadow-brut-sm">digital</span>
+                    landscape
                     for success
                 </h1>
-                <p class="text-xl text-gray-600 mb-10 max-w-lg font-medium leading-relaxed">
+                <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-lg font-medium leading-relaxed mx-auto lg:mx-0">
                     Lagos' premier dev lab building the software and brands that power the African tech economy.
                     High-pressure training for high-voltage creators.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4">
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                     <a href="#contact" class="btn-brut bg-spark-black text-white px-10">Book a consultation</a>
                     <a href="#courses" class="btn-brut bg-white text-spark-black">Explore Tracks</a>
                 </div>
             </div>
-            <div class="flex justify-center lg:justify-end reveal relative">
-                <!-- Custom Neobrutalist Student Illustration -->
-                <div class="relative w-full max-w-[500px] aspect-square animate-float">
-                    <svg viewBox="0 0 500 500" fill="none" class="w-full h-full drop-shadow-2xl">
-                        <!-- Background Shape -->
-                        <rect x="50" y="50" width="380" height="380" rx="40" fill="#A855F7" stroke="#191A23" stroke-width="8" />
-                        <rect x="70" y="70" width="380" height="380" rx="40" fill="#FF8A00" stroke="#191A23" stroke-width="8" />
-                        
-                        <!-- Screen/Laptop -->
-                        <rect x="120" y="280" width="260" height="150" rx="10" fill="#191A23" stroke="#F3F3F3" stroke-width="4" />
-                        <rect x="140" y="300" width="220" height="110" rx="4" fill="#191A23" opacity="0.8" />
-                        
-                        <!-- Code Lines inside Screen -->
-                        <rect x="155" y="315" width="80" height="8" rx="2" fill="#FF8A00" />
-                        <rect x="155" y="335" width="120" height="8" rx="2" fill="#A855F7" />
-                        <rect x="155" y="355" width="60" height="8" rx="2" fill="#F3F3F3" />
-                        
-                        <!-- Hands/Person Stylized -->
-                        <circle cx="250" cy="180" r="60" fill="#191A23" />
-                        <rect x="190" y="220" width="120" height="80" rx="20" fill="#191A23" />
-                        
-                        <!-- Accents -->
-                        <circle cx="400" cy="100" r="30" fill="white" stroke="#191A23" stroke-width="4" />
-                        <path d="M400 85v30M385 100h30" stroke="#191A23" stroke-width="4" stroke-linecap="round" />
-                    </svg>
-                    <!-- Floating Decor -->
-                    <div class="absolute -top-10 -right-10 w-24 h-24 bg-white border-4 border-spark-black rounded-full flex items-center justify-center font-black text-4xl shadow-brut-sm rotate-12">
+            <div class="flex justify-center lg:justify-end reveal relative scale-90 lg:scale-100 order-last">
+                <!-- Forge Matrix: Abstract Kinetic Composition -->
+                <div class="relative w-full max-w-[450px] aspect-square group">
+                    <!-- Layer 1: The Base Slab -->
+                    <div
+                        class="absolute inset-0 bg-spark-black/5 rounded-[40px] border-4 border-dashed border-spark-black/20 -rotate-6 scale-95 transition-transform group-hover:rotate-0">
+                    </div>
+
+                    <!-- Layer 2: The Main Terminal Slab -->
+                    <div
+                        class="absolute inset-6 md:inset-10 bg-white border-4 border-spark-black rounded-3xl shadow-brut animate-float flex flex-col overflow-hidden">
+                        <div class="h-8 bg-spark-black flex items-center px-4 gap-2">
+                            <div class="w-2 h-2 rounded-full bg-red-400"></div>
+                            <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
+                            <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                        </div>
+                        <div class="p-6 font-mono text-[10px] md:text-xs leading-relaxed">
+                            <span class="text-spark-orange">class</span> <span
+                                class="text-spark-purple">ForgeMaster</span> {<br>
+                            &nbsp;&nbsp;<span class="text-gray-400">// Powering Lagos tech</span><br>
+                            &nbsp;&nbsp;constructor() {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-spark-orange">this</span>.impact = <span
+                                class="text-spark-purple">Infinity</span>;<br>
+                            &nbsp;&nbsp;}<br>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Floating Accents -->
+                    <div
+                        class="absolute top-0 right-0 w-16 h-16 md:w-24 md:h-24 bg-spark-orange border-4 border-spark-black rounded-2xl shadow-brut-sm flex items-center justify-center font-black text-2xl md:text-3xl italic -rotate-12 transition-transform group-hover:rotate-0">
                         &lt;/&gt;
                     </div>
+
+                    <div
+                        class="absolute bottom-10 -left-6 w-24 h-12 md:w-32 md:h-16 bg-spark-purple border-4 border-spark-black rounded-xl shadow-brut-sm flex items-center justify-center px-4 transition-transform group-hover:translate-x-4">
+                        <div class="w-full h-2 bg-white/30 rounded-full overflow-hidden">
+                            <div class="w-2/3 h-full bg-white"></div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="absolute top-20 -left-6 md:-left-10 w-16 h-16 md:w-20 md:h-20 bg-white border-4 border-spark-black rounded-full shadow-brut-sm flex items-center justify-center animate-spin-slow">
+                        <svg class="w-8 h-8 md:w-10 md:h-10 text-spark-black" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                    </div>
+
+                    <!-- Grid Points Decorations -->
+                    <div class="absolute top-0 left-0 text-spark-black/20 font-black text-4xl md:text-6xl select-none">+
+                    </div>
+                    <div
+                        class="absolute bottom-0 right-0 text-spark-black/20 font-black text-4xl md:text-6xl select-none">
+                        #</div>
                 </div>
             </div>
         </section>
 
+        <!-- About Section (The Forge Mastery) -->
+        <section id="about" class="max-w-7xl mx-auto px-6 py-24 reveal">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="flex items-center gap-4 mb-8">
+                        <span
+                            class="bg-spark-purple text-white px-6 py-2 rounded-full font-black uppercase tracking-widest text-sm border-4 border-spark-black shadow-brut-sm">Our
+                            Story</span>
+                    </div>
+                    <h2
+                        class="font-head text-4xl md:text-5xl font-black mb-10 leading-tight uppercase tracking-tighter">
+                        Forging the next generation of <span
+                            class="bg-spark-orange px-2 border-2 border-spark-black">African</span> talent
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-12 font-medium leading-relaxed">
+                        SparkCode Academy isn't just a school—it's a high-pressure development lab. Based in the heart
+                        of Lagos, we bridge the gap between "good enough" and "industry elite" through immersive,
+                        industrial-standard tracks.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-6">
+                        <!-- Stat Card 1 -->
+                        <div
+                            class="bg-white border-4 border-spark-black p-6 rounded-2xl shadow-brut hover:-translate-y-1 transition-all">
+                            <div class="text-4xl font-black mb-2 text-spark-orange">500+</div>
+                            <div class="text-xs font-black uppercase tracking-widest opacity-60">Elite Graduates</div>
+                        </div>
+                        <!-- Stat Card 2 -->
+                        <div
+                            class="bg-white border-4 border-spark-black p-6 rounded-2xl shadow-brut hover:-translate-y-1 transition-all">
+                            <div class="text-4xl font-black mb-2 text-spark-purple">100%</div>
+                            <div class="text-xs font-black uppercase tracking-widest opacity-60">Industry Focused</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-1 lg:order-2 flex justify-center lg:justify-end">
+                    <div class="relative w-full max-w-[450px] aspect-square">
+                        <!-- Abstract Forge Illustration -->
+                        <div
+                            class="absolute inset-0 bg-spark-silver border-4 border-spark-black rounded-[40px] shadow-brut -rotate-3 transition-transform hover:rotate-0">
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-white border-4 border-spark-black rounded-[40px] shadow-brut rotate-3 transition-transform hover:rotate-0 p-8 flex flex-col justify-center items-center text-center">
+                            <div
+                                class="w-32 h-32 bg-spark-orange rounded-full border-4 border-spark-black flex items-center justify-center mb-6 animate-pulse">
+                                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                            <h3 class="font-head text-3xl font-black mb-2 tracking-tighter uppercase">High Pressure</h3>
+                            <p class="font-bold text-gray-500 uppercase tracking-widest text-sm">Industrial Standard
+                                Tracks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Marquee Partners (Refined Spacing) -->
@@ -195,12 +334,12 @@
             <div class="flex flex-col lg:flex-row gap-8 items-start lg:items-center mb-16 reveal">
                 <h2 class="bg-spark-orange label-pill text-4xl py-2 px-6">Services</h2>
                 <p class="max-w-xl font-medium text-lg leading-relaxed">
-                    We offer a intensive services to help individuals and businesses grow online through elite-level
-                    product training and strategy.
+                    We offer intensive tracks to help individuals and businesses grow online through elite-level
+                    frontend engineering and visual product design.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 <!-- Service 1 -->
                 <div
                     class="group bg-spark-silver border-2 border-spark-black rounded-[40px] p-10 shadow-brut hover:-translate-x-1 hover:-translate-y-1 transition-all reveal">
@@ -209,12 +348,13 @@
                             <span class="bg-spark-purple label-pill mb-2">Frontend</span><br>
                             <span class="bg-spark-purple label-pill">Development</span>
                         </div>
-                        <div class="flex items-center gap-4 group-hover:gap-6 transition-all">
+                        <a href="frontend.html"
+                            class="flex items-center gap-4 group-hover:gap-6 transition-all cursor-pointer">
                             <div
                                 class="w-12 h-12 bg-spark-black text-white rounded-full flex items-center justify-center font-bold text-2xl group-hover:rotate-45 transition-transform">
                                 ↗</div>
                             <span class="font-bold text-xl">Learn more</span>
-                        </div>
+                        </a>
                     </div>
                 </div>
 
@@ -226,46 +366,31 @@
                             <span class="bg-white text-spark-black label-pill mb-2">Graphic</span><br>
                             <span class="bg-white text-spark-black label-pill">Design</span>
                         </div>
-                        <div class="flex items-center gap-4 group-hover:gap-6 transition-all">
+                        <a href="graphics.html"
+                            class="flex items-center gap-4 group-hover:gap-6 transition-all cursor-pointer">
                             <div
                                 class="w-12 h-12 bg-white text-spark-black rounded-full flex items-center justify-center font-bold text-2xl group-hover:rotate-45 transition-transform">
                                 ↗</div>
-                            <span class="font-bold text-xl">Learn more</span>
-                        </div>
+                            <span class="font-bold text-xl text-white">Learn more</span>
+                        </a>
                     </div>
                 </div>
 
                 <!-- Service 3 -->
                 <div
-                    class="group bg-spark-orange border-2 border-spark-black rounded-[40px] p-10 shadow-brut hover:-translate-x-1 hover:-translate-y-1 transition-all reveal">
+                    class="group bg-spark-orange border-2 border-spark-black rounded-[40px] p-10 shadow-brut hover:-translate-x-1 hover:-translate-y-1 transition-all reveal md:col-span-2 lg:col-span-1">
                     <div class="flex flex-col justify-between h-full min-h-[250px]">
                         <div>
-                            <span class="bg-white label-pill mb-2">Product</span><br>
-                            <span class="bg-white label-pill">Design</span>
+                            <span class="bg-white label-pill mb-2">Product Design</span><br>
+                            <span class="bg-white label-pill">(UI/UX)</span>
                         </div>
-                        <div class="flex items-center gap-4 group-hover:gap-6 transition-all">
+                        <a href="product.html"
+                            class="flex items-center gap-4 group-hover:gap-6 transition-all cursor-pointer">
                             <div
                                 class="w-12 h-12 bg-white text-spark-black rounded-full flex items-center justify-center font-bold text-2xl group-hover:rotate-45 transition-transform">
                                 ↗</div>
                             <span class="font-bold text-xl">Learn more</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 4 -->
-                <div
-                    class="group bg-spark-purple border-2 border-spark-black rounded-[40px] p-10 shadow-brut hover:-translate-x-1 hover:-translate-y-1 transition-all reveal">
-                    <div class="flex flex-col justify-between h-full min-h-[250px]">
-                        <div>
-                            <span class="bg-white label-pill mb-2">UI/UX</span><br>
-                            <span class="bg-white label-pill">Strategy</span>
-                        </div>
-                        <div class="flex items-center gap-4 group-hover:gap-6 transition-all">
-                            <div
-                                class="w-12 h-12 bg-spark-black text-white rounded-full flex items-center justify-center font-bold text-2xl group-hover:rotate-45 transition-transform">
-                                ↗</div>
-                            <span class="font-bold text-xl">Learn more</span>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -517,11 +642,20 @@
             <div class="font-logo text-2xl font-black uppercase">SparkCode</div>
             <p class="text-gray-500 font-medium">© 2026 SparkCode Academy</p>
             <div class="flex gap-10 font-bold">
+                <a href="#about" class="hover:underline">About</a>
                 <a href="PrivacyPolicy.html" class="hover:underline">Privacy</a>
                 <a href="TermsOfService.html" class="hover:underline">Terms</a>
             </div>
         </div>
     </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopBtn" title="Go to top"
+        class="fixed bottom-8 right-8 z-50 bg-spark-orange p-3 border-4 border-spark-black shadow-brut rounded-2xl hover:-translate-y-1 hover:-translate-x-1 transition-all duration-300 opacity-0 invisible">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
 
     <script>
         // Reveal Logic
@@ -534,6 +668,237 @@
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Forge Engine Animation (High-Octane Neobrutalist Experience)
+        class ForgeEngine {
+            constructor() {
+                this.canvas = document.getElementById('forge-canvas');
+                if (!this.canvas) return;
+                this.ctx = this.canvas.getContext('2d');
+                this.sparks = [];
+                this.gridSize = 50;
+                this.mouse = { x: -1000, y: -1000 };
+                this.symbols = ['</>', '{ }', '[ ]', '*', '+', '!', '??', '=>', 'func'];
+                this.particles = [];
+
+                this.init();
+                this.animate();
+
+                window.addEventListener('resize', () => this.resize());
+                window.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+            }
+
+            init() {
+                this.resize();
+                // Create floating neobrutalist symbols
+                for (let i = 0; i < 12; i++) {
+                    this.particles.push({
+                        x: Math.random() * this.canvas.width,
+                        y: Math.random() * this.canvas.height,
+                        symbol: this.symbols[Math.floor(Math.random() * this.symbols.length)],
+                        size: Math.random() * 40 + 20,
+                        speedX: (Math.random() - 0.5) * 0.4,
+                        speedY: (Math.random() - 0.5) * 0.4,
+                        opacity: Math.random() * 0.08 + 0.02,
+                        rotation: Math.random() * Math.PI * 2,
+                        rotSpeed: (Math.random() - 0.5) * 0.005
+                    });
+                }
+            }
+
+            resize() {
+                this.canvas.width = window.innerWidth;
+                const heroSection = document.querySelector('section');
+                this.canvas.height = heroSection ? heroSection.offsetHeight + 400 : window.innerHeight;
+            }
+
+            handleMouseMove(e) {
+                const rect = this.canvas.getBoundingClientRect();
+                this.mouse.x = e.clientX - rect.left;
+                this.mouse.y = e.clientY - rect.top;
+            }
+
+            drawGrid() {
+                this.ctx.beginPath();
+                this.ctx.strokeStyle = 'rgba(25, 26, 35, 0.04)';
+                this.ctx.lineWidth = 1;
+
+                // Vertical lines
+                for (let x = 0; x <= this.canvas.width; x += this.gridSize) {
+                    this.ctx.moveTo(x, 0);
+                    this.ctx.lineTo(x, this.canvas.height);
+                }
+
+                // Horizontal lines
+                for (let y = 0; y <= this.canvas.height; y += this.gridSize) {
+                    this.ctx.moveTo(0, y);
+                    this.ctx.lineTo(this.canvas.width, y);
+                }
+                this.ctx.stroke();
+            }
+
+            createSpark() {
+                if (Math.random() > 0.92) {
+                    const dir = Math.random() > 0.5 ? 'h' : 'v';
+                    // Snap to grid
+                    const x = Math.floor(Math.random() * (this.canvas.width / this.gridSize)) * this.gridSize;
+                    const y = Math.floor(Math.random() * (this.canvas.height / this.gridSize)) * this.gridSize;
+
+                    this.sparks.push({
+                        x, y,
+                        len: Math.random() * 100 + 40,
+                        speed: Math.random() * 8 + 4,
+                        dir,
+                        color: Math.random() > 0.5 ? '#FF8A00' : '#A855F7',
+                        opacity: 1
+                    });
+                }
+            }
+
+            updateSparks() {
+                for (let i = this.sparks.length - 1; i >= 0; i--) {
+                    const s = this.sparks[i];
+                    if (s.dir === 'h') s.x += s.speed;
+                    else s.y += s.speed;
+
+                    s.opacity -= 0.01;
+
+                    if (s.opacity <= 0 || s.x > this.canvas.width || s.y > this.canvas.height) {
+                        this.sparks.splice(i, 1);
+                    } else {
+                        this.ctx.save();
+                        this.ctx.globalAlpha = s.opacity;
+                        this.ctx.fillStyle = s.color;
+                        if (s.dir === 'h') this.ctx.fillRect(s.x, s.y, s.len, 3);
+                        else this.ctx.fillRect(s.x, s.y, 3, s.len);
+                        this.ctx.restore();
+                    }
+                }
+            }
+
+            updateParticles() {
+                this.particles.forEach(p => {
+                    p.x += p.speedX;
+                    p.y += p.speedY;
+                    p.rotation += p.rotSpeed;
+
+                    if (p.x < -150) p.x = this.canvas.width + 150;
+                    if (p.x > this.canvas.width + 150) p.x = -150;
+                    if (p.y < -150) p.y = this.canvas.height + 150;
+                    if (p.y > this.canvas.height + 150) p.y = -150;
+
+                    this.ctx.save();
+                    this.ctx.translate(p.x, p.y);
+                    this.ctx.rotate(p.rotation);
+                    this.ctx.font = `900 ${p.size}px 'Space Grotesk'`;
+                    this.ctx.fillStyle = `rgba(25, 26, 35, ${p.opacity})`;
+                    this.ctx.fillText(p.symbol, 0, 0);
+                    this.ctx.restore();
+                });
+            }
+
+            animate() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                this.drawGrid();
+                this.updateParticles();
+                this.createSpark();
+                this.updateSparks();
+
+                // Mouse Interaction (Subtle radial highlight)
+                const grad = this.ctx.createRadialGradient(this.mouse.x, this.mouse.y, 0, this.mouse.x, this.mouse.y, 200);
+                grad.addColorStop(0, 'rgba(255, 138, 0, 0.08)');
+                grad.addColorStop(1, 'rgba(255, 138, 0, 0)');
+                this.ctx.fillStyle = grad;
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        // Initialize Everything
+        document.addEventListener('DOMContentLoaded', () => {
+            // Forge Engine
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                new ForgeEngine();
+            }
+
+            // Scroll Logic (Navbar & Button)
+            const navbar = document.getElementById("navbar");
+            const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+
+                // Navbar Transform
+                if (scrollY > 50) {
+                    navbar.classList.add("top-2", "py-2", "w-[98%]", "md:rounded-2xl");
+                    navbar.classList.remove("top-6", "w-[95%]", "md:rounded-[2.5rem]");
+                } else {
+                    navbar.classList.remove("top-2", "py-2", "w-[98%]", "md:rounded-2xl");
+                    navbar.classList.add("top-6", "w-[95%]", "md:rounded-[2.5rem]");
+                }
+
+                // Scroll to top visibility
+                if (scrollY > 500) {
+                    scrollTopBtn.classList.add("opacity-100", "visible");
+                    scrollTopBtn.classList.remove("opacity-0", "invisible");
+                } else {
+                    scrollTopBtn.classList.remove("opacity-100", "visible");
+                    scrollTopBtn.classList.add("opacity-0", "invisible");
+                }
+            });
+
+            // Mobile Menu Logic
+            const mobileMenu = document.getElementById("mobile-menu");
+            const mobileMenuDrawer = document.getElementById("mobile-menu-drawer");
+            const mobileMenuBackdrop = document.getElementById("mobile-menu-backdrop");
+            const mobileMenuOpen = document.getElementById("mobile-menu-open");
+            const mobileMenuClose = document.getElementById("mobile-menu-close");
+            const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+            function toggleMenu(isOpen) {
+                if (isOpen) {
+                    mobileMenu.classList.add("visible", "pointer-events-auto");
+                    mobileMenu.classList.remove("invisible", "pointer-events-none");
+                    mobileMenuBackdrop.classList.add("opacity-100");
+                    mobileMenuDrawer.classList.add("translate-x-0", "rotate-0", "skew-y-0", "opacity-100");
+                    mobileMenuDrawer.classList.remove("translate-x-full", "rotate-6", "skew-y-3", "opacity-0");
+                    document.body.style.overflow = "hidden";
+                } else {
+                    mobileMenuBackdrop.classList.remove("opacity-100");
+                    mobileMenuDrawer.classList.remove("translate-x-0", "rotate-0", "skew-y-0", "opacity-100");
+                    mobileMenuDrawer.classList.add("translate-x-full", "rotate-6", "skew-y-3", "opacity-0");
+                    document.body.style.overflow = "";
+
+                    // Delay hiding the parent to allow animation to finish
+                    setTimeout(() => {
+                        if (!mobileMenuDrawer.classList.contains("translate-x-0")) {
+                            mobileMenu.classList.add("invisible", "pointer-events-none");
+                            mobileMenu.classList.remove("visible", "pointer-events-auto");
+                        }
+                    }, 500);
+                }
+            }
+
+            if (mobileMenuOpen) mobileMenuOpen.addEventListener("click", () => toggleMenu(true));
+            if (mobileMenuClose) mobileMenuClose.addEventListener("click", () => toggleMenu(false));
+            if (mobileMenuBackdrop) mobileMenuBackdrop.addEventListener("click", () => toggleMenu(false));
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener("click", () => toggleMenu(false));
+            });
+
+            // Scroll to top click handler
+            if (scrollTopBtn) {
+                scrollTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                    });
+                });
+            }
+        });
     </script>
 </body>
 

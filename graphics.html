@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Logic | SparkCode Academy</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Space+Grotesk:wght@700&family=Outfit:wght@900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        spark: {
+                            orange: '#FF8A00',
+                            purple: '#A855F7',
+                            black: '#191A23',
+                            silver: '#F3F3F3',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        head: ['Space Grotesk', 'sans-serif'],
+                        logo: ['Outfit', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'brut': '8px 8px 0px 0px #191A23',
+                        'brut-sm': '4px 4px 0px 0px #191A23',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer components {
+            .btn-brut {
+                @apply inline-block px-8 py-4 border-4 border-spark-black font-black uppercase tracking-widest transition-all duration-200 shadow-brut hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[10px_10px_0px_0px_#191A23] active:translate-x-0 active:translate-y-0 active:shadow-none;
+            }
+            .label-pill {
+                @apply inline-block px-4 py-1 border-2 border-spark-black rounded-lg font-black uppercase tracking-tighter text-sm mb-4 transform -rotate-2;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white text-spark-black font-sans selection:bg-spark-orange selection:text-white min-h-screen">
+
+    <!-- Header / Nav -->
+    <header class="p-6 md:p-10">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-spark-purple border-2 border-spark-black rounded-lg flex items-center justify-center shadow-brut-sm">
+                    <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z" />
+                    </svg>
+                </div>
+                <a href="index.html" class="font-logo text-2xl uppercase font-black tracking-tighter">SparkCode</a>
+            </div>
+            <a href="index.html#services" class="btn-brut bg-spark-silver text-sm py-2 px-6 shadow-brut-sm w-full sm:w-auto text-center">Back to Forge</a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-12 md:py-24">
+        <!-- Service Hero -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-24">
+            <div class="text-center lg:text-left">
+                <span class="bg-spark-orange text-white label-pill border-spark-black">Visual Track</span>
+                <h1 class="font-head text-4xl md:text-5xl lg:text-7xl font-black uppercase leading-[0.9] tracking-tighter mb-8 italic">
+                    Graphic<br><span class="text-spark-purple underline decoration-[8px]">Logic</span>
+                </h1>
+                <p class="text-lg md:text-xl lg:text-2xl font-medium leading-relaxed mb-10 text-gray-700 mx-auto lg:mx-0 max-w-2xl">
+                    Beyond making things look "pretty." We teach the **industrial logic** of visual communication and brand identity systems.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="index.html#contact" class="btn-brut bg-spark-purple text-white border-spark-black w-full sm:w-auto text-center">Join the Cohort</a>
+                </div>
+            </div>
+            <div class="relative order-first lg:order-last">
+                <div class="bg-spark-orange border-4 md:border-8 border-spark-black p-8 md:p-12 rounded-[32px] md:rounded-[60px] shadow-brut -rotate-2 hover:rotate-0 transition-transform duration-500 overflow-hidden relative">
+                    <div class="text-6xl md:text-[12rem] font-black opacity-10 leading-none select-none absolute -bottom-5 md:-bottom-10 -left-5 md:-left-10 uppercase">POSTER</div>
+                    <div class="relative z-10 space-y-4">
+                        <div class="w-full h-4 md:h-8 bg-spark-black"></div>
+                        <div class="w-2/3 h-4 md:h-8 bg-spark-black"></div>
+                        <div class="w-full h-24 md:h-32 border-4 border-spark-black bg-white flex items-center justify-center font-black text-2xl md:text-4xl uppercase">BRUTAL</div>
+                    </div>
+                </div>
+                <!-- Abstract Accent -->
+                <div class="absolute -bottom-6 -left-6 md:-bottom-10 md:-left-10 w-24 h-24 md:w-32 md:h-32 bg-spark-silver rounded shadow-brut border-4 border-spark-black -z-10 rotate-12"></div>
+            </div>
+        </div>
+
+        <!-- Details Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+            <div class="bg-spark-silver border-4 border-spark-black p-8 rounded-3xl shadow-brut">
+                <h3 class="text-2xl font-black mb-4 uppercase italic tracking-tighter">01. Typography</h3>
+                <p class="font-medium text-gray-600">Master font psychology, custom lettering, and high-impact layout systems that command attention.</p>
+            </div>
+            <div class="bg-spark-silver border-4 border-spark-black p-8 rounded-3xl shadow-brut">
+                <h3 class="text-2xl font-black mb-4 uppercase italic tracking-tighter">02. Identity</h3>
+                <p class="font-medium text-gray-600">Learn to build professional brand identities from the ground up, including logo systems and style guides.</p>
+            </div>
+            <div class="bg-spark-silver border-4 border-spark-black p-8 rounded-3xl shadow-brut md:col-span-2 lg:col-span-1">
+                <h3 class="text-2xl font-black mb-4 uppercase italic tracking-tighter">03. Impact</h3>
+                <p class="font-medium text-gray-600">Master color theory and composition logic to create visuals that effectively drive user action.</p>
+            </div>
+        </div>
+
+        <!-- Curriculum Block -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-24">
+            <div class="bg-spark-black text-white p-8 md:p-12 rounded-[32px] md:rounded-[40px] border-4 border-spark-black shadow-brut">
+                <h2 class="font-head text-2xl md:text-3xl font-black uppercase mb-8 italic">The Curriculum</h2>
+                <ul class="space-y-4 text-gray-300 font-medium">
+                    <li class="flex items-center gap-3">
+                        <span class="w-6 h-6 bg-spark-orange rounded flex-shrink-0 border-2 border-white"></span>
+                        Visual Hierarchy & Composition
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="w-6 h-6 bg-spark-purple rounded flex-shrink-0 border-2 border-white"></span>
+                        Color Psychology & Brand Systems
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="w-6 h-6 bg-white rounded flex-shrink-0 border-2 border-spark-black"></span>
+                        Professional Industry Assets
+                    </li>
+                </ul>
+            </div>
+            <div class="bg-spark-purple text-white p-8 md:p-12 rounded-[32px] md:rounded-[40px] border-4 border-spark-black shadow-brut flex flex-col justify-center text-center">
+                <h2 class="font-head text-3xl md:text-4xl font-black uppercase mb-4 italic leading-tight">Elite Tools only</h2>
+                <p class="text-lg md:text-xl font-bold opacity-80 uppercase tracking-widest mb-8">Photoshop / Illustrator / InDesign</p>
+                <a href="index.html#contact" class="btn-brut bg-white text-spark-black w-full text-center">Enroll Now</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-spark-silver border-t-4 border-spark-black py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="font-logo text-3xl font-black uppercase mb-4">SparkCode</div>
+            <p class="text-gray-500 font-medium uppercase tracking-widest text-xs">Forging the next wave of African designers.</p>
+            <div class="mt-8">
+                <a href="index.html" class="text-spark-orange font-black hover:underline px-4 italic uppercase tracking-widest">Home</a>
+                <a href="index.html#courses" class="text-spark-orange font-black hover:underline px-4 italic uppercase tracking-widest">Enroll</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
