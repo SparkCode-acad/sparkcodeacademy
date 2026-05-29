@@ -38,36 +38,30 @@ const Floating3DShapes: React.FC = () => {
       {/* Torus */}
       <mesh ref={meshRef1} position={[-1.5, 1.2, 0]}>
         <torusGeometry args={[0.6, 0.2, 16, 100]} />
-        <meshPhysicalMaterial
+        <meshStandardMaterial
           color="#6366f1"
-          roughness={0.1}
-          transmission={0.6}
-          thickness={1.2}
-          clearcoat={1.0}
+          roughness={0.2}
+          metalness={0.15}
         />
       </mesh>
 
       {/* Cone */}
       <mesh ref={meshRef2} position={[1.8, -1.0, 0]}>
         <coneGeometry args={[0.5, 1.0, 32]} />
-        <meshPhysicalMaterial
+        <meshStandardMaterial
           color="#f97316"
-          roughness={0.2}
-          transmission={0.5}
-          thickness={1.0}
-          clearcoat={0.8}
+          roughness={0.3}
+          metalness={0.1}
         />
       </mesh>
 
       {/* Sphere */}
       <mesh ref={meshRef3} position={[1.5, 1.0, -1.0]}>
         <sphereGeometry args={[0.4, 32, 32]} />
-        <meshPhysicalMaterial
+        <meshStandardMaterial
           color="#ec4899"
-          roughness={0.1}
-          transmission={0.8}
-          thickness={1.5}
-          clearcoat={1.0}
+          roughness={0.2}
+          metalness={0.2}
         />
       </mesh>
     </group>

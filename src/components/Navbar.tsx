@@ -31,7 +31,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavClick }) => {
   const handleClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
     setIsOpen(false);
-    onNavClick(href);
+    // Allow the drawer's height collapsing animation to finish so
+    // scrollIntoView accurately targets the dynamic layout offset.
+    setTimeout(() => {
+      onNavClick(href);
+    }, 150);
   };
 
   return (

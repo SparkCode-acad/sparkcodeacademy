@@ -1,47 +1,5 @@
-import React, { useRef, useMemo } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
-import * as THREE from 'three';
-
-const ParticlePoints: React.FC = () => {
-  const pointsRef = useRef<THREE.Points>(null);
-
-  const count = 100;
-  const positions = useMemo(() => {
-    const pos = new Float32Array(count * 3);
-    for (let i = 0; i < count; i++) {
-      pos[i * 3] = (Math.random() - 0.5) * 10;     // X
-      pos[i * 3 + 1] = (Math.random() - 0.5) * 6;  // Y
-      pos[i * 3 + 2] = (Math.random() - 0.5) * 4;  // Z
-    }
-    return pos;
-  }, []);
-
-  useFrame((state) => {
-    if (pointsRef.current) {
-      pointsRef.current.rotation.y = state.clock.getElapsedTime() * 0.02;
-      pointsRef.current.rotation.x = state.clock.getElapsedTime() * 0.01;
-    }
-  });
-
-  return (
-    <points ref={pointsRef}>
-      <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          args={[positions, 3]}
-        />
-      </bufferGeometry>
-      <pointsMaterial
-        size={0.05}
-        color="#6366f1"
-        transparent
-        opacity={0.4}
-        sizeAttenuation
-      />
-    </points>
-  );
-};
 
 interface CTABannerProps {
   onNavClick: (sectionId: string) => void;
@@ -50,16 +8,12 @@ interface CTABannerProps {
 export const CTABanner: React.FC<CTABannerProps> = ({ onNavClick }) => {
   return (
     <section className="py-20 bg-white relative z-10 overflow-hidden border-t border-slate-100 font-sans">
-      {/* Three.js Particle Background */}
+      {/* High-performance CSS particles background */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
-        <Canvas
-          camera={{ position: [0, 0, 5], fov: 60 }}
-          style={{ background: 'transparent' }}
-          gl={{ alpha: true, antialias: true }}
-        >
-          <ambientLight intensity={0.5} />
-          <ParticlePoints />
-        </Canvas>
+        <div className="absolute top-1/4 left-1/3 w-3 h-3 rounded-full bg-accent-purple/20 animate-pulse" />
+        <div className="absolute bottom-1/3 right-1/4 w-2 h-2 rounded-full bg-accent-orange/30 animate-ping [animation-duration:3s]" />
+        <div className="absolute top-1/2 right-1/3 w-4 h-4 rounded-full bg-pink-500/10 animate-bounce [animation-duration:5s]" />
+        <div className="absolute bottom-1/4 left-1/4 w-2.5 h-2.5 rounded-full bg-accent-purple/15 animate-pulse [animation-duration:4s]" />
       </div>
 
       {/* Decorative gradient blur */}
