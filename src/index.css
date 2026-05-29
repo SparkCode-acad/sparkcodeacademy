@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg-primary: 255, 255, 255;
+    --color-bg-secondary: 248, 250, 252;
+    --color-bg-card: 255, 255, 255;
+    --color-text-primary: 15, 23, 42;
+    --color-text-secondary: 71, 85, 105;
+    --color-accent-orange: 99, 102, 241; /* Indigo as secondary highlight */
+    --color-accent-purple: 249, 115, 22;  /* Orange as primary brand color */
+  }
+
+  body {
+    background-color: rgb(var(--color-bg-primary));
+    color: rgb(var(--color-text-primary));
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* Accessibility rules for prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-delay: -1ms !important;
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      background-attachment: initial !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0s !important;
+      transition-delay: 0s !important;
+    }
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--color-bg-secondary));
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--color-accent-purple));
+}
+
+/* Grid background pattern */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(var(--color-accent-purple), 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--color-accent-purple), 0.04) 1px, transparent 1px);
+}
+
+/* Soft glow effects suitable for light theme */
+.glow-purple {
+  box-shadow: 0 20px 40px -15px rgba(var(--color-accent-purple), 0.12);
+}
+
+.glow-orange {
+  box-shadow: 0 20px 40px -15px rgba(var(--color-accent-orange), 0.12);
+}
+
+/* Smooth gradients */
+.gradient-indigo-purple {
+  background: linear-gradient(135deg, rgba(var(--color-accent-purple), 0.05) 0%, rgba(var(--color-accent-orange), 0.02) 100%);
+}
