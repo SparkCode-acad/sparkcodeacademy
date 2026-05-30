@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, Check } from 'lucide-react';
 
 export const Contact: React.FC = () => {
@@ -10,25 +9,6 @@ export const Contact: React.FC = () => {
     motivation: '',
     newsletter: false,
   });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email) return;
-    
-    // Simulate API request
-    setSubmitted(true);
-    setTimeout(() => {
-      setFormData({
-        name: '',
-        email: '',
-        program: 'Frontend Development',
-        motivation: '',
-        newsletter: false,
-      });
-      setSubmitted(false);
-    }, 4000);
-  };
 
   const programs = [
     "Frontend Development",
@@ -96,24 +76,7 @@ export const Contact: React.FC = () => {
           {/* Right Form Column */}
           <div className="lg:col-span-7 w-full">
             <div className="bg-white border border-slate-100 p-8 sm:p-10 rounded-3xl shadow-lg relative overflow-hidden">
-              <AnimatePresence mode="wait">
-                {submitted ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    className="flex flex-col items-center justify-center py-16 text-center gap-4"
-                  >
-                    <div className="w-16 h-16 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center mb-2">
-                      <Check className="w-8 h-8 text-emerald-500" />
-                    </div>
-                    <h3 className="font-display font-bold text-2xl text-text-primary">Application Received</h3>
-                    <p className="text-sm text-text-secondary max-w-sm">
-                      Thank you for applying to SparkCode Academy. Our team will review your application and reach out to you within 24 hours.
-                    </p>
-                  </motion.div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="flex flex-col gap-6 text-left">
+              <form action="https://formsubmit.co/sparkcodeacad@gmail.com" method="POST" className="flex flex-col gap-6 text-left">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div className="flex flex-col gap-2">
                         <label htmlFor="name" className="font-bold text-[10px] tracking-wider text-text-secondary uppercase">
@@ -123,6 +86,7 @@ export const Contact: React.FC = () => {
                           id="name"
                           type="text"
                           required
+                          name="Name"
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           placeholder="e.g. John Doe"
@@ -136,6 +100,7 @@ export const Contact: React.FC = () => {
                         <input
                           id="email"
                           type="email"
+                          name="Email"
                           required
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -151,6 +116,8 @@ export const Contact: React.FC = () => {
                       </label>
                       <select
                         id="program"
+                        name="Program"
+                        required
                         value={formData.program}
                         onChange={(e) => setFormData({ ...formData, program: e.target.value })}
                         className="w-full bg-slate-50 border border-slate-200 focus:border-accent-purple focus:bg-white rounded-xl px-4 py-3 text-sm text-text-primary outline-none transition-all duration-300 cursor-pointer"
@@ -170,6 +137,8 @@ export const Contact: React.FC = () => {
                       <textarea
                         id="motivation"
                         rows={4}
+                        name="Message"
+                        required
                         value={formData.motivation}
                         onChange={(e) => setFormData({ ...formData, motivation: e.target.value })}
                         placeholder="Tell us about your background, goals, and what you hope to achieve..."
@@ -182,6 +151,7 @@ export const Contact: React.FC = () => {
                         <input
                           type="checkbox"
                           checked={formData.newsletter}
+                          name="Newsletter"
                           onChange={(e) => setFormData({ ...formData, newsletter: e.target.checked })}
                           className="sr-only peer"
                         />
@@ -201,8 +171,6 @@ export const Contact: React.FC = () => {
                       Submit Application
                     </button>
                   </form>
-                )}
-              </AnimatePresence>
             </div>
           </div>
         </div>
