@@ -161,7 +161,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavClick }) => {
                 <li className="flex items-start gap-2 text-sm text-text-secondary">
                   <Mail className="w-4 h-4 text-accent-purple mt-0.5 flex-shrink-0" />
                   <a href="mailto:hello@sparkcode.dev" className="hover:text-accent-purple transition-colors break-all">
-                    hello@sparkcode.dev
+                    sparkcodeacad@gmail.com
                   </a>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-text-secondary">
@@ -173,7 +173,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavClick }) => {
                 <li className="flex items-start gap-2 text-sm text-text-secondary leading-relaxed">
                   <MapPin className="w-4 h-4 text-accent-purple mt-0.5 flex-shrink-0" />
                   <span>
-                    1 Code Street, <br />Yaba, Lagos, <br />Nigeria
+                    Remote
                   </span>
                 </li>
               </ul>
