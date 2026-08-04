@@ -16,6 +16,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavClick }) => {
     { name: 'Process', href: 'process' },
     { name: 'Showcase', href: 'showcase' },
     { name: 'Pricing', href: 'pricing' },
+    { name: 'Team', href: 'team' },
     { name: 'FAQ', href: 'faq' },
     { name: 'Contact', href: 'contact' },
   ];

@@ -169,7 +169,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavClick }) => {
             </div>
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-              <span className="font-bold">Lagos Office & Remote</span>
+              <span className="font-bold">Remote</span>
             </div>
           </motion.div>
         </motion.div>

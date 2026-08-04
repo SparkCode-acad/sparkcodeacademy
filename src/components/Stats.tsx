@@ -6,7 +6,7 @@ export const Stats: React.FC = () => {
   const stats = [
     {
       icon: <GraduationCap className="w-6 h-6 text-accent-purple" />,
-      number: "1,200+",
+      number: "200+",
       title: "Students Graduated",
       desc: "Trained across core digital skills.",
     },
@@ -24,7 +24,7 @@ export const Stats: React.FC = () => {
     },
     {
       icon: <Building2 className="w-6 h-6 text-accent-purple" />,
-      number: "45+",
+      number: "5+",
       title: "Hiring Partners",
       desc: "Top startups & international firms.",
     },

@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Code2, PenTool, LayoutTemplate, ArrowRight, Clock, Award, BookOpen, ChevronDown } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Code2, PenTool, LayoutTemplate, ArrowRight, Clock, Award, BookOpen } from 'lucide-react';
 
 interface ProgramsProps {
   onNavClick: (sectionId: string) => void;
 }
 
 export const Programs: React.FC<ProgramsProps> = ({ onNavClick }) => {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const programs = [
     {
@@ -56,14 +55,6 @@ export const Programs: React.FC<ProgramsProps> = ({ onNavClick }) => {
       ]
     },
   ];
-
-  const toggleExpand = (idx: number) => {
-    if (expandedIndex === idx) {
-      setExpandedIndex(null);
-    } else {
-      setExpandedIndex(idx);
-    }
-  };
 
   return (
     <section id="programs" className="py-24 bg-white relative z-10 font-sans">
@@ -126,45 +117,24 @@ export const Programs: React.FC<ProgramsProps> = ({ onNavClick }) => {
                   </div>
                 </div>
 
-                 {/* Accordion Toggle */}
-                <button
-                  onClick={() => toggleExpand(idx)}
-                  className="w-full flex items-center justify-between py-3 px-4 rounded-xl bg-slate-50 hover:bg-slate-100 text-xs font-bold text-text-primary transition-colors mb-4 cursor-pointer"
-                >
-                  <span>Curriculum Breakdown</span>
-                  <motion.div
-                    animate={{ rotate: expandedIndex === idx ? 180 : 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <ChevronDown className="w-4 h-4 text-slate-500" />
-                  </motion.div>
-                </button>
-
-                {/* Accordion Content */}
-                <AnimatePresence initial={false}>
-                  {expandedIndex === idx && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <ul className="flex flex-col gap-3 py-2 text-[11px] text-text-secondary border-b border-slate-100 mb-4 pl-1">
-                        {prog.modules.map((mod, midx) => (
-                          <li key={midx} className="flex items-start gap-2 leading-relaxed">
-                            <span className="text-accent-purple font-bold mt-0.5">•</span>
-                            <span>{mod}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* Curriculum Breakdown */}
+                <div className="mt-6 border-t border-slate-50 pt-6">
+                  <h4 className="text-[11px] font-bold tracking-wider text-accent-purple uppercase mb-3">
+                    Curriculum Outline
+                  </h4>
+                  <ul className="flex flex-col gap-2.5 text-[11px] text-text-secondary pl-1">
+                    {prog.modules.map((mod, midx) => (
+                      <li key={midx} className="flex items-start gap-2 leading-relaxed">
+                        <span className="text-accent-purple font-bold mt-0.5">•</span>
+                        <span>{mod}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="mt-4">
+              <div className="mt-8">
                 <a
                   href="#contact"
                   onClick={(e) => {

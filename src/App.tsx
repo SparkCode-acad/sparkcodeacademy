@@ -6,6 +6,7 @@ import { Process } from './components/Process';
 import { Projects } from './components/Projects';
 import { Pricing } from './components/Pricing';
 import { Testimonials } from './components/Testimonials';
+import { Team } from './components/Team';
 import { FAQ } from './components/FAQ';
 import { Contact } from './components/Contact';
 import { CTABanner } from './components/CTABanner';
@@ -48,6 +49,9 @@ function App() {
 
       {/* Testimonials */}
       <Testimonials />
+
+      {/* Team Section */}
+      <Team />
 
       {/* FAQ Accordion */}
       <FAQ />

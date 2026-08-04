@@ -12,7 +12,7 @@ export const Pricing: React.FC<PricingProps> = ({ onNavClick }) => {
   const plans = [
     {
       name: "Graphic Design",
-      price: { upfront: 600, monthly: 120 },
+      price: { upfront: 180000, monthly: 35000 },
       period: { upfront: "One-Time Pay", monthly: "For 6 Months" },
       desc: "Master vector layouts, photo manipulation, and core brand guidelines.",
       accent: false,
@@ -27,7 +27,7 @@ export const Pricing: React.FC<PricingProps> = ({ onNavClick }) => {
     },
     {
       name: "UI/UX Design",
-      price: { upfront: 900, monthly: 180 },
+      price: { upfront: 250000, monthly: 50000 },
       period: { upfront: "One-Time Pay", monthly: "For 6 Months" },
       desc: "Learn wireframing, interactive prototyping, and design systems in Figma.",
       accent: true, // popular
@@ -44,7 +44,7 @@ export const Pricing: React.FC<PricingProps> = ({ onNavClick }) => {
     },
     {
       name: "Frontend Development",
-      price: { upfront: 1200, monthly: 240 },
+      price: { upfront: 350000, monthly: 70000 },
       period: { upfront: "One-Time Pay", monthly: "For 6 Months" },
       desc: "Master JavaScript, React, Tailwind CSS, Git, and web deployment pipelines.",
       accent: false,
@@ -129,9 +129,9 @@ export const Pricing: React.FC<PricingProps> = ({ onNavClick }) => {
                 </p>
 
                 {/* Price Display */}
-                <div className="mb-6 flex items-baseline gap-2 border-b border-slate-50 pb-6">
-                  <span className="text-4xl sm:text-5xl font-display font-black text-text-primary">
-                    ${billingCycle === 'upfront' ? plan.price.upfront : plan.price.monthly}
+                <div className="mb-6 flex items-baseline gap-1 border-b border-slate-50 pb-6">
+                  <span className="text-3xl sm:text-4xl font-display font-black text-text-primary">
+                    ₦{(billingCycle === 'upfront' ? plan.price.upfront : plan.price.monthly).toLocaleString()}
                   </span>
                   <span className="text-xs text-slate-400 font-bold">
                     / {billingCycle === 'upfront' ? plan.period.upfront : plan.period.monthly}
