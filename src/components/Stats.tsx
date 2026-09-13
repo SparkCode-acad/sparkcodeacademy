@@ -10,12 +10,12 @@ export const Stats: React.FC = () => {
       title: "Students Graduated",
       desc: "Trained across core digital skills.",
     },
-    {
+    /*{
       icon: <Briefcase className="w-6 h-6 text-accent-purple" />,
       number: "92%",
       title: "Employment Rate",
       desc: "Within 6 months of graduation.",
-    },
+    },*/
     {
       icon: <Star className="w-6 h-6 text-accent-orange" />,
       number: "4.9/5",
